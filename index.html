@@ -3,501 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kishore Penty — AWS Platform Engineer | Senior Cloud & DevOps Engineer</title>
-    <meta name="description" content="Kishore Penty — AWS Platform Engineer with 9+ years of experience in Infrastructure Development, AWS Cloud Architecture, and DevOps Engineering. Multi-cloud certified professional.">
+    <title>Kishore Penty — AWS Platform Engineer</title>
+    <meta name="description" content="AWS Platform Engineer with 9+ years of experience in Cloud Architecture and DevOps Engineering.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
+        if(typeof tailwind !== 'undefined'){
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            sans: ['Inter', 'system-ui', 'sans-serif'],
+                            mono: ['JetBrains Mono', 'monospace'],
+                        }
+                    }
                 }
             }
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',system-ui,sans-serif;background:#000;color:#fff;overflow-x:hidden}
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:#000}
+        ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:3px}
 
-        /* Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+        @keyframes fadeSlideIn{0%{opacity:0;transform:translateY(30px);filter:blur(8px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
+        @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-8px,-12px)}}
+        @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-8px)}}
+        @keyframes float3{0%,100%{transform:translate(0,0)}50%{transform:translate(-4px,8px)}}
+        @keyframes blink-caret{from,to{border-color:transparent}50%{border-color:#3B82F6}}
+        @keyframes orbit{from{transform:rotate(0deg) translateX(140px) rotate(0deg)}to{transform:rotate(360deg) translateX(140px) rotate(-360deg)}}
+        @keyframes grid-pulse{0%,100%{opacity:0.03}50%{opacity:0.06}}
 
-        /* Animations */
-        @keyframes fadeSlideIn {
-            0% { opacity: 0; transform: translateY(30px); filter: blur(8px); }
-            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-        @keyframes float1 {
-            0%,100% { transform: translate(0,0) rotate(0deg); }
-            50% { transform: translate(-8px,-12px) rotate(2deg); }
-        }
-        @keyframes float2 {
-            0%,100% { transform: translate(0,0) rotate(0deg); }
-            50% { transform: translate(6px,-8px) rotate(-1.5deg); }
-        }
-        @keyframes float3 {
-            0%,100% { transform: translate(0,0); }
-            50% { transform: translate(-4px,8px); }
-        }
-        @keyframes pulse-glow {
-            0%,100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-        }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes blink-caret {
-            from, to { border-color: transparent; }
-            50% { border-color: #3B82F6; }
-        }
-        @keyframes scan-line {
-            0% { top: -2px; }
-            100% { top: 100%; }
-        }
-        @keyframes grid-pulse {
-            0%,100% { opacity: 0.03; }
-            50% { opacity: 0.06; }
-        }
-        @keyframes orbit {
-            from { transform: rotate(0deg) translateX(140px) rotate(0deg); }
-            to { transform: rotate(360deg) translateX(140px) rotate(-360deg); }
-        }
-        @keyframes counter-up {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .anim{animation:fadeSlideIn 0.8s ease-out both}
+        .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
+        .d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}
 
-        .animate-in { animation: fadeSlideIn 0.8s ease-out both; }
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-        .delay-5 { animation-delay: 0.5s; }
-        .delay-6 { animation-delay: 0.6s; }
-        .delay-7 { animation-delay: 0.7s; }
-        .delay-8 { animation-delay: 0.8s; }
+        .reveal{opacity:0;transform:translateY(40px);transition:all 0.9s cubic-bezier(0.16,1,0.3,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
 
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .gradient-text{background:linear-gradient(135deg,#fff 0%,#60a5fa 50%,#a78bfa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #fff 0%, #60a5fa 50%, #a78bfa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .gradient-text-warm {
-            background: linear-gradient(135deg, #fff 0%, #fbbf24 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+        .glass{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);backdrop-filter:blur(24px);transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
+        .glass:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.12);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
 
-        /* Cards */
-        .glass-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.06);
-            backdrop-filter: blur(24px);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .glass-card:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.12);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-        }
+        .timeline-line{background:linear-gradient(to bottom,transparent,rgba(59,130,246,0.3),rgba(139,92,246,0.3),transparent)}
+        .timeline-dot{background:#000;border:2px solid rgba(59,130,246,0.6);box-shadow:0 0 12px rgba(59,130,246,0.3);transition:all 0.3s}
+        .timeline-item:hover .timeline-dot{background:#3B82F6;box-shadow:0 0 20px rgba(59,130,246,0.5);transform:scale(1.3)}
 
-        /* Timeline */
-        .timeline-line {
-            background: linear-gradient(to bottom, transparent, rgba(59,130,246,0.3), rgba(139,92,246,0.3), transparent);
-        }
-        .timeline-dot {
-            background: #000;
-            border: 2px solid rgba(59,130,246,0.6);
-            box-shadow: 0 0 12px rgba(59,130,246,0.3);
-            transition: all 0.3s;
-        }
-        .timeline-item:hover .timeline-dot {
-            background: #3B82F6;
-            box-shadow: 0 0 20px rgba(59,130,246,0.5);
-            transform: scale(1.3);
-        }
+        .skill-tag{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);transition:all 0.25s;cursor:default}
+        .skill-tag:hover{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.3);transform:translateY(-2px)}
 
-        /* Skill tag */
-        .skill-tag {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.25s;
-            cursor: default;
-        }
-        .skill-tag:hover {
-            background: rgba(59,130,246,0.15);
-            border-color: rgba(59,130,246,0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59,130,246,0.1);
-        }
+        .nav-link{position:relative;transition:color 0.3s}
+        .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:linear-gradient(to right,#3B82F6,#8B5CF6);transition:width 0.3s}
+        .nav-link:hover::after,.nav-link.active::after{width:100%}
 
-        /* Nav */
-        .nav-link {
-            position: relative;
-            transition: color 0.3s;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1.5px;
-            background: linear-gradient(to right, #3B82F6, #8B5CF6);
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
+        .orbit-ring{border:1px solid rgba(255,255,255,0.04);border-radius:50%;position:absolute}
+        .orbit-dot{width:8px;height:8px;border-radius:50%;position:absolute;animation:orbit linear infinite}
 
-        /* Orbit visualization */
-        .orbit-ring {
-            border: 1px solid rgba(255,255,255,0.04);
-            border-radius: 50%;
-            position: absolute;
-        }
-        .orbit-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            position: absolute;
-            animation: orbit linear infinite;
-        }
+        .divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,0.08),transparent)}
 
-        /* Section divider */
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
-        }
+        .cert-badge{background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.1));border:1px solid rgba(59,130,246,0.2);transition:all 0.3s}
+        .cert-badge:hover{background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(139,92,246,0.2));border-color:rgba(59,130,246,0.4);transform:scale(1.03)}
 
-        /* Floating particles */
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(59,130,246,0.3);
-            animation: float1 6s ease-in-out infinite;
-        }
+        .terminal-cursor{display:inline-block;width:10px;height:20px;background:#3B82F6;margin-left:2px;animation:blink-caret 1s step-end infinite;vertical-align:text-bottom}
 
-        /* Stat counter */
-        .stat-number {
-            font-variant-numeric: tabular-nums;
-        }
+        .grid-bg{background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;animation:grid-pulse 8s ease-in-out infinite}
 
-        /* Mobile menu */
-        .mobile-menu {
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .mobile-menu.open {
-            transform: translateX(0);
-        }
+        .cta-btn{position:relative;overflow:hidden;transition:all 0.3s}
+        .cta-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:left 0.5s}
+        .cta-btn:hover::before{left:100%}
+        .cta-btn:active{transform:scale(0.96)}
 
-        /* Cert badge */
-        .cert-badge {
-            background: linear-gradient(135deg, rgba(59,130,246,0.1), rgba(139,92,246,0.1));
-            border: 1px solid rgba(59,130,246,0.2);
-            transition: all 0.3s;
-        }
-        .cert-badge:hover {
-            background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(139,92,246,0.2));
-            border-color: rgba(59,130,246,0.4);
-            transform: scale(1.03);
-        }
+        .mobile-menu{transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+        .mobile-menu.open{transform:translateX(0)}
 
-        /* Terminal cursor */
-        .terminal-cursor {
-            display: inline-block;
-            width: 10px;
-            height: 20px;
-            background: #3B82F6;
-            margin-left: 2px;
-            animation: blink-caret 1s step-end infinite;
-            vertical-align: text-bottom;
-        }
-
-        /* Grid background */
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: grid-pulse 8s ease-in-out infinite;
-        }
-
-        /* CTA Button */
-        .cta-btn {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        .cta-btn::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s;
-        }
-        .cta-btn:hover::before {
-            left: 100%;
-        }
-        .cta-btn:active {
-            transform: scale(0.96);
-        }
-
-        /* Toast */
-        .toast {
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
+        .icon-sm{width:16px;height:16px;stroke-width:2;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+        .icon-md{width:20px;height:20px;stroke-width:2;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+        .icon-lg{width:24px;height:24px;stroke-width:2;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
     </style>
 </head>
 <body class="grid-bg">
 
-    <!-- Background Glow Orbs -->
-    <div class="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
-        <div class="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] rounded-full bg-blue-500/[0.04] blur-[120px]" style="animation: float1 12s ease-in-out infinite;"></div>
-        <div class="absolute top-[40%] right-[-200px] w-[500px] h-[500px] rounded-full bg-purple-500/[0.03] blur-[100px]" style="animation: float2 15s ease-in-out infinite;"></div>
-        <div class="absolute bottom-[-100px] left-[30%] w-[700px] h-[700px] rounded-full bg-blue-600/[0.02] blur-[120px]" style="animation: float3 18s ease-in-out infinite;"></div>
+    <!-- Background Glows -->
+    <div style="position:fixed;inset:0;pointer-events:none;z-index:0" aria-hidden="true">
+        <div style="position:absolute;top:-200px;left:-100px;width:600px;height:600px;border-radius:50%;background:rgba(59,130,246,0.04);filter:blur(120px);animation:float1 12s ease-in-out infinite"></div>
+        <div style="position:absolute;top:40%;right:-200px;width:500px;height:500px;border-radius:50%;background:rgba(139,92,246,0.03);filter:blur(100px);animation:float2 15s ease-in-out infinite"></div>
+        <div style="position:absolute;bottom:-100px;left:30%;width:700px;height:700px;border-radius:50%;background:rgba(59,130,246,0.02);filter:blur(120px);animation:float3 18s ease-in-out infinite"></div>
     </div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex items-center justify-between h-16">
-                <!-- Logo -->
-                <a href="#hero" class="flex items-center gap-3 group">
-                    <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold text-white shadow-lg shadow-blue-500/20 group-hover:shadow-blue-500/40 transition-shadow">
-                        K
-                    </div>
-                    <span class="font-medium text-sm tracking-tight hidden sm:block">Kishore Penty</span>
+    <nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:50;transition:all 0.5s">
+        <div style="max-width:1280px;margin:0 auto;padding:0 24px">
+            <div style="display:flex;align-items:center;justify-content:space-between;height:64px">
+                <a href="#hero" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff">
+                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#3B82F6,#8B5CF6);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;box-shadow:0 4px 12px rgba(59,130,246,0.3)">K</div>
+                    <span style="font-weight:500;font-size:14px;letter-spacing:-0.01em" class="hidden sm:inline">Kishore Penty</span>
                 </a>
-
-                <!-- Desktop Nav -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#about" class="nav-link text-sm text-white/60 hover:text-white">About</a>
-                    <a href="#experience" class="nav-link text-sm text-white/60 hover:text-white">Experience</a>
-                    <a href="#skills" class="nav-link text-sm text-white/60 hover:text-white">Skills</a>
-                    <a href="#certifications" class="nav-link text-sm text-white/60 hover:text-white">Certifications</a>
-                    <a href="#contact" class="cta-btn inline-flex items-center gap-2 px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-white/90">
-                        <i data-lucide="mail" class="w-4 h-4"></i>
+                <div class="hidden md:flex" style="align-items:center;gap:32px">
+                    <a href="#about" class="nav-link" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none">About</a>
+                    <a href="#experience" class="nav-link" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none">Experience</a>
+                    <a href="#skills" class="nav-link" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none">Skills</a>
+                    <a href="#certifications" class="nav-link" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none">Certifications</a>
+                    <a href="#contact" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:#fff;color:#000;font-size:14px;font-weight:500;border-radius:8px;text-decoration:none">
+                        <svg class="icon-sm" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                         Contact
                     </a>
                 </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button id="menuToggle" class="md:hidden p-2 text-white/60 hover:text-white transition-colors" aria-label="Toggle menu">
-                    <i data-lucide="menu" class="w-5 h-5" id="menuIcon"></i>
+                <button id="menuToggle" class="md:hidden" style="padding:8px;background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer" aria-label="Menu">
+                    <svg class="icon-lg" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
                 </button>
             </div>
         </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full bg-black/95 backdrop-blur-xl border-l border-white/5 z-50 md:hidden">
-            <div class="p-6">
-                <button id="menuClose" class="mb-8 p-2 text-white/60 hover:text-white transition-colors" aria-label="Close menu">
-                    <i data-lucide="x" class="w-5 h-5"></i>
+        <div id="mobileMenu" class="mobile-menu" style="position:fixed;top:0;right:0;width:288px;height:100%;background:rgba(0,0,0,0.95);backdrop-filter:blur(24px);border-left:1px solid rgba(255,255,255,0.05);z-index:50;display:none">
+            <div style="padding:24px">
+                <button id="menuClose" style="margin-bottom:32px;padding:8px;background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer" aria-label="Close">
+                    <svg class="icon-lg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
-                <div class="flex flex-col gap-6">
-                    <a href="#about" class="mobile-nav-link text-lg text-white/70 hover:text-white transition-colors">About</a>
-                    <a href="#experience" class="mobile-nav-link text-lg text-white/70 hover:text-white transition-colors">Experience</a>
-                    <a href="#skills" class="mobile-nav-link text-lg text-white/70 hover:text-white transition-colors">Skills</a>
-                    <a href="#certifications" class="mobile-nav-link text-lg text-white/70 hover:text-white transition-colors">Certifications</a>
-                    <div class="section-divider my-2"></div>
-                    <a href="#contact" class="mobile-nav-link inline-flex items-center gap-2 px-4 py-3 bg-white text-black text-sm font-medium rounded-lg justify-center">
-                        <i data-lucide="mail" class="w-4 h-4"></i>
-                        Contact Me
-                    </a>
+                <div style="display:flex;flex-direction:column;gap:24px">
+                    <a href="#about" class="mob-link" style="font-size:18px;color:rgba(255,255,255,0.7);text-decoration:none">About</a>
+                    <a href="#experience" class="mob-link" style="font-size:18px;color:rgba(255,255,255,0.7);text-decoration:none">Experience</a>
+                    <a href="#skills" class="mob-link" style="font-size:18px;color:rgba(255,255,255,0.7);text-decoration:none">Skills</a>
+                    <a href="#certifications" class="mob-link" style="font-size:18px;color:rgba(255,255,255,0.7);text-decoration:none">Certifications</a>
+                    <div class="divider" style="margin:8px 0"></div>
+                    <a href="#contact" class="mob-link" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:#fff;color:#000;font-size:14px;font-weight:500;border-radius:8px;text-decoration:none">Contact Me</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen flex items-center justify-center px-6 pt-16">
-        <!-- Orbit Visualization -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-            <div class="orbit-ring w-[280px] h-[280px]" style="animation: grid-pulse 4s ease-in-out infinite;"></div>
-            <div class="orbit-ring w-[420px] h-[420px]" style="animation: grid-pulse 6s ease-in-out infinite 1s;"></div>
-            <div class="orbit-ring w-[560px] h-[560px]" style="animation: grid-pulse 8s ease-in-out infinite 2s;"></div>
-            <div class="orbit-dot bg-blue-500/60" style="animation-duration: 12s; top: 50%; left: 50%;"></div>
-            <div class="orbit-dot bg-purple-500/40" style="animation-duration: 18s; animation-direction: reverse; top: 50%; left: 50%;"></div>
-            <div class="orbit-dot bg-blue-400/30" style="animation-duration: 25s; top: 50%; left: 50%;"></div>
+    <!-- Hero -->
+    <section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:96px 24px 24px">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none" aria-hidden="true">
+            <div class="orbit-ring" style="width:280px;height:280px;animation:grid-pulse 4s ease-in-out infinite"></div>
+            <div class="orbit-ring" style="width:420px;height:420px;animation:grid-pulse 6s ease-in-out infinite 1s"></div>
+            <div class="orbit-ring" style="width:560px;height:560px;animation:grid-pulse 8s ease-in-out infinite 2s"></div>
+            <div class="orbit-dot" style="background:rgba(59,130,246,0.6);animation-duration:12s;top:50%;left:50%"></div>
+            <div class="orbit-dot" style="background:rgba(139,92,246,0.4);animation-duration:18s;animation-direction:reverse;top:50%;left:50%"></div>
         </div>
 
-        <div class="relative z-10 text-center max-w-4xl mx-auto">
-            <!-- Status Badge -->
-            <div class="animate-in delay-1 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] mb-8">
-                <span class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]"></span>
-                <span class="text-xs font-medium text-white/60 tracking-wide">Available for Opportunities</span>
+        <div style="position:relative;z-index:10;text-align:center;max-width:896px;margin:0 auto">
+            <div class="anim d1" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:32px">
+                <span style="width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 8px rgba(34,197,94,0.5)"></span>
+                <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Available for Opportunities</span>
             </div>
 
-            <!-- Name -->
-            <h1 class="animate-in delay-2 text-5xl sm:text-6xl lg:text-8xl font-medium tracking-tight leading-[0.95] mb-6">
+            <h1 class="anim d2" style="font-size:clamp(48px,10vw,96px);font-weight:500;letter-spacing:-0.03em;line-height:0.95;margin-bottom:24px">
                 <span class="gradient-text">Kishore</span><br>
-                <span class="text-white">Penty</span>
+                <span style="color:#fff">Penty</span>
             </h1>
 
-            <!-- Title -->
-            <div class="animate-in delay-3 flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-                <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20">
-                    <i data-lucide="cloud" class="w-3.5 h-3.5 text-blue-400"></i>
-                    <span class="text-sm font-medium text-blue-400">AWS Platform Engineer</span>
+            <div class="anim d3" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-bottom:32px">
+                <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2)">
+                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+                    <span style="font-size:14px;font-weight:500;color:#60A5FA">AWS Platform Engineer</span>
                 </span>
-                <span class="text-white/20 hidden sm:block">|</span>
-                <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20">
-                    <i data-lucide="git-branch" class="w-3.5 h-3.5 text-purple-400"></i>
-                    <span class="text-sm font-medium text-purple-400">Senior Cloud & DevOps</span>
+                <span class="hidden sm:inline" style="color:rgba(255,255,255,0.2)">|</span>
+                <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2)">
+                    <svg class="icon-sm" style="color:#A78BFA" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                    <span style="font-size:14px;font-weight:500;color:#A78BFA">Senior Cloud & DevOps</span>
                 </span>
             </div>
 
-            <!-- Terminal Line -->
-            <div class="animate-in delay-4 inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/[0.03] border border-white/[0.06] font-mono text-sm mb-10">
-                <span class="text-green-400">$</span>
-                <span class="text-white/50" id="typingText"></span>
+            <div class="anim d4" style="display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);font-family:'JetBrains Mono',monospace;font-size:14px;margin-bottom:40px">
+                <span style="color:#22C55E">$</span>
+                <span style="color:rgba(255,255,255,0.5)" id="typingText"></span>
                 <span class="terminal-cursor"></span>
             </div>
 
-            <!-- Stats -->
-            <div class="animate-in delay-5 flex flex-wrap items-center justify-center gap-8 sm:gap-12 mb-12">
-                <div class="text-center">
-                    <div class="text-3xl sm:text-4xl font-semibold stat-number text-white">9<span class="text-blue-400">+</span></div>
-                    <div class="text-xs text-white/40 mt-1 uppercase tracking-widest">Years Exp</div>
+            <div class="anim d5" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:32px 48px;margin-bottom:48px">
+                <div style="text-align:center">
+                    <div style="font-size:clamp(28px,5vw,40px);font-weight:600;font-variant-numeric:tabular-nums;color:#fff">9<span style="color:#3B82F6">+</span></div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;letter-spacing:0.15em">Years Exp</div>
                 </div>
-                <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
-                <div class="text-center">
-                    <div class="text-3xl sm:text-4xl font-semibold stat-number text-white">100<span class="text-blue-400">+</span></div>
-                    <div class="text-xs text-white/40 mt-1 uppercase tracking-widest">AWS Accounts</div>
+                <div class="hidden sm:block" style="width:1px;height:40px;background:rgba(255,255,255,0.1)"></div>
+                <div style="text-align:center">
+                    <div style="font-size:clamp(28px,5vw,40px);font-weight:600;font-variant-numeric:tabular-nums;color:#fff">100<span style="color:#3B82F6">+</span></div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;letter-spacing:0.15em">AWS Accounts</div>
                 </div>
-                <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
-                <div class="text-center">
-                    <div class="text-3xl sm:text-4xl font-semibold stat-number text-white">4<span class="text-blue-400"></span></div>
-                    <div class="text-xs text-white/40 mt-1 uppercase tracking-widest">Certifications</div>
+                <div class="hidden sm:block" style="width:1px;height:40px;background:rgba(255,255,255,0.1)"></div>
+                <div style="text-align:center">
+                    <div style="font-size:clamp(28px,5vw,40px);font-weight:600;font-variant-numeric:tabular-nums;color:#fff">4</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;letter-spacing:0.15em">Certifications</div>
                 </div>
-                <div class="w-px h-10 bg-white/10 hidden sm:block"></div>
-                <div class="text-center">
-                    <div class="text-3xl sm:text-4xl font-semibold stat-number text-white">3<span class="text-blue-400"></span></div>
-                    <div class="text-xs text-white/40 mt-1 uppercase tracking-widest">Cloud Platforms</div>
+                <div class="hidden sm:block" style="width:1px;height:40px;background:rgba(255,255,255,0.1)"></div>
+                <div style="text-align:center">
+                    <div style="font-size:clamp(28px,5vw,40px);font-weight:600;font-variant-numeric:tabular-nums;color:#fff">3</div>
+                    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;letter-spacing:0.15em">Cloud Platforms</div>
                 </div>
             </div>
 
-            <!-- CTA Buttons -->
-            <div class="animate-in delay-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#experience" class="cta-btn inline-flex items-center gap-2 px-8 py-3.5 bg-white text-black text-sm font-medium rounded-xl hover:bg-white/90 shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] transition-shadow">
-                    <i data-lucide="briefcase" class="w-4 h-4"></i>
+            <div class="anim d6" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px">
+                <a href="#experience" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:#fff;color:#000;font-size:14px;font-weight:500;border-radius:12px;text-decoration:none;box-shadow:0 0 30px rgba(255,255,255,0.15)">
+                    <svg class="icon-sm" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                     View Experience
                 </a>
-                <a href="#contact" class="cta-btn inline-flex items-center gap-2 px-8 py-3.5 bg-white/5 text-white text-sm font-medium rounded-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all">
-                    <i data-lucide="download" class="w-4 h-4"></i>
+                <a href="#contact" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:rgba(255,255,255,0.05);color:#fff;font-size:14px;font-weight:500;border-radius:12px;border:1px solid rgba(255,255,255,0.1);text-decoration:none">
+                    <svg class="icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                     Get In Touch
                 </a>
             </div>
 
-            <!-- Scroll Indicator -->
-            <div class="animate-in delay-7 mt-16 flex flex-col items-center gap-2">
-                <span class="text-[10px] text-white/30 uppercase tracking-[0.2em]">Scroll</span>
-                <div class="w-5 h-8 rounded-full border border-white/10 flex items-start justify-center p-1.5">
-                    <div class="w-1 h-2 rounded-full bg-white/40" style="animation: float3 2s ease-in-out infinite;"></div>
+            <div class="anim d7" style="margin-top:64px;display:flex;flex-direction:column;align-items:center;gap:8px">
+                <span style="font-size:10px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.2em">Scroll</span>
+                <div style="width:20px;height:32px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:flex-start;justify-content:center;padding:6px">
+                    <div style="width:4px;height:8px;border-radius:9999px;background:rgba(255,255,255,0.4);animation:float3 2s ease-in-out infinite"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="relative py-24 lg:py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="reveal grid lg:grid-cols-2 gap-16 items-center">
-                <!-- Left -->
+    <!-- About -->
+    <section id="about" style="position:relative;padding:96px 24px">
+        <div style="max-width:1280px;margin:0 auto">
+            <div class="reveal" style="display:grid;grid-template-columns:1fr;gap:64px;align-items:center" class="lg-grid">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] mb-6">
-                        <i data-lucide="user" class="w-3.5 h-3.5 text-blue-400"></i>
-                        <span class="text-xs font-medium text-white/60 tracking-wide">About Me</span>
+                    <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
+                        <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">About Me</span>
                     </div>
-                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight leading-[1.05] mb-6">
+                    <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em;line-height:1.05;margin-bottom:24px">
                         Building the <span class="gradient-text">cloud infrastructure</span> that powers modern enterprises
                     </h2>
-                    <div class="space-y-4 text-base text-white/60 leading-relaxed">
-                        <p>Results-driven AWS Platform Engineer with <span class="text-white font-medium">9+ years of experience</span> in Infrastructure Development through AWS Cloud Architecture and DevOps Engineering.</p>
+                    <div style="display:flex;flex-direction:column;gap:16px;font-size:16px;color:rgba(255,255,255,0.6);line-height:1.7">
+                        <p>Results-driven AWS Platform Engineer with <span style="color:#fff;font-weight:500">9+ years of experience</span> in Infrastructure Development through AWS Cloud Architecture and DevOps Engineering.</p>
                         <p>Proficient in designing and managing multi-account Landing Zones, implementing IaC solutions using Terraform and CloudFormation, and driving CI/CD automation with Jenkins and GitHub Actions.</p>
-                        <p>Holds multiple cloud certifications across <span class="text-blue-400">AWS</span>, <span class="text-blue-400">Azure</span>, and <span class="text-blue-400">GCP</span>. Adept at leveraging AI-assisted tools like GitHub Copilot and Amazon Q to accelerate delivery and ensure cloud governance, compliance, and security at scale.</p>
+                        <p>Holds multiple cloud certifications across <span style="color:#60A5FA">AWS</span>, <span style="color:#60A5FA">Azure</span>, and <span style="color:#60A5FA">GCP</span>. Adept at leveraging AI-assisted tools like GitHub Copilot and Amazon Q to accelerate delivery and ensure cloud governance, compliance, and security at scale.</p>
                     </div>
                 </div>
-
-                <!-- Right - Info Cards -->
-                <div class="space-y-4">
-                    <div class="glass-card rounded-2xl p-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="map-pin" class="w-5 h-5 text-blue-400"></i>
-                            </div>
-                            <div>
-                                <div class="text-sm font-medium text-white mb-1">Location</div>
-                                <div class="text-sm text-white/50">Hyderabad, India</div>
-                            </div>
+                <div style="display:flex;flex-direction:column;gap:16px">
+                    <div class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                            <svg class="icon-md" style="color:#60A5FA" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Location</div>
+                            <div style="font-size:14px;color:rgba(255,255,255,0.5)">Hyderabad, India</div>
                         </div>
                     </div>
-                    <div class="glass-card rounded-2xl p-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="graduation-cap" class="w-5 h-5 text-purple-400"></i>
-                            </div>
-                            <div>
-                                <div class="text-sm font-medium text-white mb-1">Education</div>
-                                <div class="text-sm text-white/50">MBA — JNTU Hyderabad</div>
-                            </div>
+                    <div class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                            <svg class="icon-md" style="color:#A78BFA" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Education</div>
+                            <div style="font-size:14px;color:rgba(255,255,255,0.5)">MBA — JNTU Hyderabad</div>
                         </div>
                     </div>
-                    <div class="glass-card rounded-2xl p-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="brain" class="w-5 h-5 text-green-400"></i>
-                            </div>
-                            <div>
-                                <div class="text-sm font-medium text-white mb-1">AI-Enhanced Workflow</div>
-                                <div class="text-sm text-white/50">GitHub Copilot • Amazon Q • AI-assisted IaC development</div>
-                            </div>
+                    <div class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                            <svg class="icon-md" style="color:#22C55E" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4c0 2 1 3 2 4l-2 8h8l-2-8c1-1 2-2 2-4a4 4 0 0 0-4-4Z"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">AI-Enhanced Workflow</div>
+                            <div style="font-size:14px;color:rgba(255,255,255,0.5)">GitHub Copilot · Amazon Q · AI-assisted IaC</div>
                         </div>
                     </div>
-                    <div class="glass-card rounded-2xl p-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                                <i data-lucide="trophy" class="w-5 h-5 text-amber-400"></i>
-                            </div>
-                            <div>
-                                <div class="text-sm font-medium text-white mb-1">Awards</div>
-                                <div class="text-sm text-white/50">Excellence Award • TechnoWiz Award for innovative PoCs</div>
-                            </div>
+                    <div class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                            <svg class="icon-md" style="color:#F59E0B" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Awards</div>
+                            <div style="font-size:14px;color:rgba(255,255,255,0.5)">Excellence Award · TechnoWiz Award for innovative PoCs</div>
                         </div>
                     </div>
                 </div>
@@ -505,449 +275,406 @@
         </div>
     </section>
 
-    <div class="section-divider max-w-7xl mx-auto"></div>
+    <div class="divider" style="max-width:1280px;margin:0 auto"></div>
 
-    <!-- Experience Section -->
-    <section id="experience" class="relative py-24 lg:py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="reveal text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] mb-6">
-                    <i data-lucide="briefcase" class="w-3.5 h-3.5 text-blue-400"></i>
-                    <span class="text-xs font-medium text-white/60 tracking-wide">Experience</span>
+    <!-- Experience -->
+    <section id="experience" style="position:relative;padding:96px 24px">
+        <div style="max-width:1280px;margin:0 auto">
+            <div class="reveal" style="text-align:center;margin-bottom:64px">
+                <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
+                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Experience</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+                <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em">
                     Professional <span class="gradient-text">Journey</span>
                 </h2>
             </div>
 
-            <!-- Timeline -->
-            <div class="relative">
-                <!-- Timeline Line (Desktop) -->
-                <div class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px timeline-line -translate-x-1/2"></div>
-                <!-- Timeline Line (Mobile) -->
-                <div class="lg:hidden absolute left-6 top-0 bottom-0 w-px timeline-line"></div>
+            <div style="position:relative">
+                <div class="hidden lg:block" style="position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%)" class="timeline-line"></div>
+                <div class="lg:hidden" style="position:absolute;left:24px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(59,130,246,0.3),rgba(139,92,246,0.3),transparent)"></div>
 
                 <!-- NTT DATA -->
-                <div class="reveal timeline-item relative lg:grid lg:grid-cols-2 lg:gap-16 mb-12 lg:mb-16">
-                    <div class="lg:text-right lg:pr-12 pl-16 lg:pl-0">
-                        <div class="glass-card rounded-2xl p-6 lg:p-8">
-                            <div class="flex items-center gap-3 lg:justify-end mb-4">
-                                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-green-500/10 text-green-400 text-xs font-medium">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
-                                    Current
-                                </span>
-                                <span class="text-xs text-white/40 font-mono">Aug 2025 – Present</span>
-                            </div>
-                            <h3 class="text-xl font-medium text-white mb-1">AWS Platform Engineer</h3>
-                            <div class="text-sm text-blue-400 font-medium mb-4">NTT DATA • Hyderabad</div>
-                            <ul class="space-y-2.5 text-sm text-white/55 leading-relaxed">
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Leveraged GitHub Copilot to accelerate Terraform development, generate HCL configs, and troubleshoot errors</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Managed 100+ AWS accounts across multi-account Landing Zones using Terraform (IaC)</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Authored reusable Terraform modules for VPC, Security Hub, hosted zones, and IDP provisioning</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Integrated OPA/Checkov policy checks into CI/CD for security and compliance guardrails</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Built CIDR conflict detection workflows to automate network validation</span></li>
-                            </ul>
+                <div class="reveal timeline-item" style="position:relative;margin-bottom:48px;padding-left:64px">
+                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(59,130,246,0.6);box-shadow:0 0 12px rgba(59,130,246,0.3);z-index:10" class="timeline-dot"></div>
+                    <div class="glass" style="border-radius:16px;padding:24px 32px">
+                        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px">
+                            <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:rgba(34,197,94,0.1);color:#22C55E;font-size:12px;font-weight:500">
+                                <span style="width:6px;height:6px;border-radius:50%;background:#22C55E"></span>Current
+                            </span>
+                            <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Aug 2025 – Present</span>
                         </div>
+                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-bottom:4px">AWS Platform Engineer</h3>
+                        <div style="font-size:14px;color:#60A5FA;font-weight:500;margin-bottom:16px">NTT DATA · Hyderabad</div>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Leveraged GitHub Copilot to accelerate Terraform development, generate HCL configs, and troubleshoot errors</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Managed 100+ AWS accounts across multi-account Landing Zones using Terraform (IaC)</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Authored reusable Terraform modules for VPC, Security Hub, hosted zones, and IDP provisioning</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Integrated OPA/Checkov policy checks into CI/CD for security and compliance guardrails</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Built CIDR conflict detection workflows to automate network validation</li>
+                        </ul>
                     </div>
-                    <!-- Dot -->
-                    <div class="absolute left-4 lg:left-1/2 top-8 w-4 h-4 rounded-full timeline-dot -translate-x-0 lg:-translate-x-1/2 z-10"></div>
-                    <div class="hidden lg:block"></div>
                 </div>
 
                 <!-- Hitachi Vantara -->
-                <div class="reveal timeline-item relative lg:grid lg:grid-cols-2 lg:gap-16 mb-12 lg:mb-16">
-                    <div class="hidden lg:block"></div>
-                    <div class="lg:pl-12 pl-16">
-                        <div class="glass-card rounded-2xl p-6 lg:p-8">
-                            <span class="text-xs text-white/40 font-mono">Jun 2022 – Aug 2025</span>
-                            <h3 class="text-xl font-medium text-white mt-3 mb-1">Senior DevOps Engineer</h3>
-                            <div class="text-sm text-purple-400 font-medium mb-4">Hitachi Vantara • Hyderabad</div>
-                            <ul class="space-y-2.5 text-sm text-white/55 leading-relaxed">
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Wrote Infrastructure as Code using HashiCorp Terraform (HCL) and Python Lambda automation</span></li>
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Configured ELB, Auto Scaling, SSL via ACM; managed RDS (MySQL, Aurora, MariaDB)</span></li>
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Integrated AWS Bedrock with Service Catalog for GenAI self-service provisioning</span></li>
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Debugged real-time pod issues across Prod/UAT/Dev in Kubernetes/EKS</span></li>
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Administered Jenkins CI/CD pipelines; integrated Grafana & Prometheus monitoring</span></li>
-                            </ul>
-                        </div>
+                <div class="reveal timeline-item" style="position:relative;margin-bottom:48px;padding-left:64px">
+                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(139,92,246,0.6);box-shadow:0 0 12px rgba(139,92,246,0.3);z-index:10" class="timeline-dot"></div>
+                    <div class="glass" style="border-radius:16px;padding:24px 32px">
+                        <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Jun 2022 – Aug 2025</span>
+                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-top:12px;margin-bottom:4px">Senior DevOps Engineer</h3>
+                        <div style="font-size:14px;color:#A78BFA;font-weight:500;margin-bottom:16px">Hitachi Vantara · Hyderabad</div>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Wrote IaC using HashiCorp Terraform (HCL) and Python Lambda automation scripts</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Configured ELB, Auto Scaling, SSL via ACM; managed RDS (MySQL, Aurora, MariaDB)</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Integrated AWS Bedrock with Service Catalog for GenAI self-service provisioning</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Debugged real-time pod issues across Prod/UAT/Dev in Kubernetes/EKS</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Administered Jenkins CI/CD pipelines; integrated Grafana & Prometheus monitoring</li>
+                        </ul>
                     </div>
-                    <div class="absolute left-4 lg:left-1/2 top-8 w-4 h-4 rounded-full timeline-dot -translate-x-0 lg:-translate-x-1/2 z-10"></div>
                 </div>
 
                 <!-- Freestone Infotech -->
-                <div class="reveal timeline-item relative lg:grid lg:grid-cols-2 lg:gap-16 mb-12 lg:mb-16">
-                    <div class="lg:text-right lg:pr-12 pl-16 lg:pl-0">
-                        <div class="glass-card rounded-2xl p-6 lg:p-8">
-                            <span class="text-xs text-white/40 font-mono">Feb 2020 – Jun 2022</span>
-                            <h3 class="text-xl font-medium text-white mt-3 mb-1">Senior DevOps Engineer</h3>
-                            <div class="text-sm text-blue-400 font-medium mb-4">Freestone Infotech • Mumbai</div>
-                            <ul class="space-y-2.5 text-sm text-white/55 leading-relaxed">
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Designed Azure Landing Zones with policy-driven governance and network segmentation</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Integrated Keycloak with Active Directory for SSO and identity federation</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Implemented ELK stack — Elasticsearch, Kibana, Logstash, Metricbeat</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Integrated HashiCorp Vault for password management across all environments</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Built CI/CD pipelines with Jenkins, Maven, Ansible, Terraform, and Git</span></li>
-                            </ul>
-                        </div>
+                <div class="reveal timeline-item" style="position:relative;margin-bottom:48px;padding-left:64px">
+                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(59,130,246,0.6);box-shadow:0 0 12px rgba(59,130,246,0.3);z-index:10" class="timeline-dot"></div>
+                    <div class="glass" style="border-radius:16px;padding:24px 32px">
+                        <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Feb 2020 – Jun 2022</span>
+                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-top:12px;margin-bottom:4px">Senior DevOps Engineer</h3>
+                        <div style="font-size:14px;color:#60A5FA;font-weight:500;margin-bottom:16px">Freestone Infotech · Mumbai</div>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Designed Azure Landing Zones with policy-driven governance and network segmentation</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Integrated Keycloak with Active Directory for SSO and identity federation</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Implemented ELK stack — Elasticsearch, Kibana, Logstash, Metricbeat</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Integrated HashiCorp Vault for password management across all environments</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Built CI/CD pipelines with Jenkins, Maven, Ansible, Terraform, and Git</li>
+                        </ul>
                     </div>
-                    <div class="absolute left-4 lg:left-1/2 top-8 w-4 h-4 rounded-full timeline-dot -translate-x-0 lg:-translate-x-1/2 z-10"></div>
-                    <div class="hidden lg:block"></div>
                 </div>
 
                 <!-- Optum -->
-                <div class="reveal timeline-item relative lg:grid lg:grid-cols-2 lg:gap-16 mb-12 lg:mb-16">
-                    <div class="hidden lg:block"></div>
-                    <div class="lg:pl-12 pl-16">
-                        <div class="glass-card rounded-2xl p-6 lg:p-8">
-                            <span class="text-xs text-white/40 font-mono">Jul 2017 – Sep 2019</span>
-                            <h3 class="text-xl font-medium text-white mt-3 mb-1">Cloud Engineer / DevOps Engineer</h3>
-                            <div class="text-sm text-purple-400 font-medium mb-4">Optum Global Solutions • Hyderabad</div>
-                            <ul class="space-y-2.5 text-sm text-white/55 leading-relaxed">
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Deployed multi-tier, high-availability AWS infrastructure across environments</span></li>
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Set up Kubernetes clusters, managed pods; deployed Docker microservices to EKS and AKS</span></li>
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Performed Physical to Cloud Migration using CloudEndure</span></li>
-                                <li class="flex gap-2"><span class="text-purple-400/60 mt-0.5 flex-shrink-0">›</span><span>Maintained release management and change management processes</span></li>
-                            </ul>
-                        </div>
+                <div class="reveal timeline-item" style="position:relative;margin-bottom:48px;padding-left:64px">
+                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(139,92,246,0.6);box-shadow:0 0 12px rgba(139,92,246,0.3);z-index:10" class="timeline-dot"></div>
+                    <div class="glass" style="border-radius:16px;padding:24px 32px">
+                        <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Jul 2017 – Sep 2019</span>
+                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-top:12px;margin-bottom:4px">Cloud Engineer / DevOps Engineer</h3>
+                        <div style="font-size:14px;color:#A78BFA;font-weight:500;margin-bottom:16px">Optum Global Solutions · Hyderabad</div>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Deployed multi-tier, high-availability AWS infrastructure across environments</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Set up Kubernetes clusters, managed pods; deployed Docker microservices to EKS and AKS</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Performed Physical to Cloud Migration using CloudEndure</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Maintained release management and change management processes</li>
+                        </ul>
                     </div>
-                    <div class="absolute left-4 lg:left-1/2 top-8 w-4 h-4 rounded-full timeline-dot -translate-x-0 lg:-translate-x-1/2 z-10"></div>
                 </div>
 
                 <!-- Magna Infotech -->
-                <div class="reveal timeline-item relative lg:grid lg:grid-cols-2 lg:gap-16">
-                    <div class="lg:text-right lg:pr-12 pl-16 lg:pl-0">
-                        <div class="glass-card rounded-2xl p-6 lg:p-8">
-                            <span class="text-xs text-white/40 font-mono">Aug 2016 – Feb 2017</span>
-                            <h3 class="text-xl font-medium text-white mt-3 mb-1">Linux Admin / Cloud Admin / DevOps Engineer</h3>
-                            <div class="text-sm text-blue-400 font-medium mb-4">Magna Infotech • Hyderabad</div>
-                            <ul class="space-y-2.5 text-sm text-white/55 leading-relaxed">
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Managed RHEL infrastructure; administered users, groups, permissions</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Installed Nagios monitoring, Splunk clusters on UNIX; configured Yum repos</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Performed LVM disk management; configured Apache, SSL on RHEL/AIX/HP-UX</span></li>
-                                <li class="flex gap-2 lg:justify-end"><span class="text-blue-400/60 mt-0.5 flex-shrink-0 lg:hidden">›</span><span>Automated tasks using Python; used BMC Remedy and ServiceNow</span></li>
-                            </ul>
-                        </div>
+                <div class="reveal timeline-item" style="position:relative;padding-left:64px">
+                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(59,130,246,0.6);box-shadow:0 0 12px rgba(59,130,246,0.3);z-index:10" class="timeline-dot"></div>
+                    <div class="glass" style="border-radius:16px;padding:24px 32px">
+                        <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Aug 2016 – Feb 2017</span>
+                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-top:12px;margin-bottom:4px">Linux Admin / Cloud Admin / DevOps Engineer</h3>
+                        <div style="font-size:14px;color:#60A5FA;font-weight:500;margin-bottom:16px">Magna Infotech · Hyderabad</div>
+                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Managed RHEL infrastructure; administered users, groups, and permissions</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Installed Nagios monitoring, Splunk clusters on UNIX; configured Yum repos</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Performed LVM disk management; configured Apache, SSL on RHEL/AIX/HP-UX</li>
+                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Automated tasks using Python; used BMC Remedy and ServiceNow</li>
+                        </ul>
                     </div>
-                    <div class="absolute left-4 lg:left-1/2 top-8 w-4 h-4 rounded-full timeline-dot -translate-x-0 lg:-translate-x-1/2 z-10"></div>
-                    <div class="hidden lg:block"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="section-divider max-w-7xl mx-auto"></div>
+    <div class="divider" style="max-width:1280px;margin:0 auto"></div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="relative py-24 lg:py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="reveal text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] mb-6">
-                    <i data-lucide="layers" class="w-3.5 h-3.5 text-blue-400"></i>
-                    <span class="text-xs font-medium text-white/60 tracking-wide">Technical Skills</span>
+    <!-- Skills -->
+    <section id="skills" style="position:relative;padding:96px 24px">
+        <div style="max-width:1280px;margin:0 auto">
+            <div class="reveal" style="text-align:center;margin-bottom:64px">
+                <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
+                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Technical Skills</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+                <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em">
                     Tech <span class="gradient-text">Arsenal</span>
                 </h2>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Cloud Technologies -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-                            <i data-lucide="cloud" class="w-5 h-5 text-blue-400"></i>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#60A5FA" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">Cloud Technologies</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">Cloud Technologies</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">AWS</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Microsoft Azure</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Google Cloud Platform</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">AWS</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Microsoft Azure</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Google Cloud Platform</span>
                     </div>
                 </div>
 
-                <!-- IaC & Automation -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
-                            <i data-lucide="file-code-2" class="w-5 h-5 text-purple-400"></i>
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#A78BFA" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">IaC & Automation</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">IaC & Automation</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Terraform</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">CloudFormation</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Ansible</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">AWS CDK</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Terraform</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">CloudFormation</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Ansible</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">AWS CDK</span>
                     </div>
                 </div>
 
-                <!-- CI/CD Tools -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center">
-                            <i data-lucide="rocket" class="w-5 h-5 text-green-400"></i>
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#22C55E" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">CI/CD Tools</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">CI/CD Tools</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Jenkins</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">GitHub Actions</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">GitLab CI/CD</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Maven</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">npm</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Jenkins</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">GitHub Actions</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">GitLab CI/CD</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Maven</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">npm</span>
                     </div>
                 </div>
 
-                <!-- Scripting -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
-                            <i data-lucide="terminal" class="w-5 h-5 text-amber-400"></i>
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#F59E0B" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">Scripting</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">Scripting</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Python</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Bash</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Groovy</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">AWS CLI</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Python</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Bash</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Groovy</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">AWS CLI</span>
                     </div>
                 </div>
 
-                <!-- Containerization -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-                            <i data-lucide="container" class="w-5 h-5 text-cyan-400"></i>
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(6,182,212,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#06B6D4" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">Containerization</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">Containerization</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Docker</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Kubernetes (EKS)</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Kubernetes (AKS)</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">ECS</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Docker</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Kubernetes (EKS)</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Kubernetes (AKS)</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">ECS</span>
                     </div>
                 </div>
 
-                <!-- Databases -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-rose-500/10 flex items-center justify-center">
-                            <i data-lucide="database" class="w-5 h-5 text-rose-400"></i>
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(244,63,94,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#F43F5E" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">Databases</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">Databases</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">MySQL</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Aurora</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">MariaDB</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">DynamoDB</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">DocumentDB</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Neptune DB</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Redshift</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">MySQL</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Aurora</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">MariaDB</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">DynamoDB</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">DocumentDB</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Neptune DB</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Redshift</span>
                     </div>
                 </div>
 
-                <!-- Monitoring -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center">
-                            <i data-lucide="activity" class="w-5 h-5 text-indigo-400"></i>
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(99,102,241,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#6366F1" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">Monitoring</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">Monitoring</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Grafana</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Prometheus</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">DataDog</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">New Relic</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Helm</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">CloudWatch</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">CloudTrail</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Grafana</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Prometheus</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">DataDog</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">New Relic</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Helm</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">CloudWatch</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">CloudTrail</span>
                     </div>
                 </div>
 
-                <!-- Security & Compliance -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-                            <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#10B981" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">Security & Compliance</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">Security & Compliance</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">KMS</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">HSM</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">ACM</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">IAM</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">SCPs</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">OPA</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Checkov</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Wiz</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Security Hub</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">KMS</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">HSM</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">ACM</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">IAM</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">SCPs</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">OPA</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Checkov</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Wiz</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Security Hub</span>
                     </div>
                 </div>
 
-                <!-- Version Control & Other -->
-                <div class="reveal glass-card rounded-2xl p-6">
-                    <div class="flex items-center gap-3 mb-5">
-                        <div class="w-10 h-10 rounded-xl bg-pink-500/10 flex items-center justify-center">
-                            <i data-lucide="git-merge" class="w-5 h-5 text-pink-400"></i>
+                <div class="reveal glass" style="border-radius:16px;padding:24px">
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(236,72,153,0.1);display:flex;align-items:center;justify-content:center">
+                            <svg class="icon-md" style="color:#EC4899" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
                         </div>
-                        <h3 class="text-base font-medium text-white">VCS & Other</h3>
+                        <h3 style="font-size:16px;font-weight:500;color:#fff">VCS & Other</h3>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Git</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">GitHub</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Bitbucket</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">GitLab</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">JIRA</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Apache</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">Nginx</span>
-                        <span class="skill-tag px-3 py-1.5 rounded-lg text-xs text-white/70">RHEL</span>
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Git</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">GitHub</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Bitbucket</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">GitLab</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">JIRA</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Apache</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Nginx</span>
+                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">RHEL</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="section-divider max-w-7xl mx-auto"></div>
+    <div class="divider" style="max-width:1280px;margin:0 auto"></div>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="relative py-24 lg:py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="reveal text-center mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] mb-6">
-                    <i data-lucide="award" class="w-3.5 h-3.5 text-blue-400"></i>
-                    <span class="text-xs font-medium text-white/60 tracking-wide">Certifications & Awards</span>
+    <!-- Certifications -->
+    <section id="certifications" style="position:relative;padding:96px 24px">
+        <div style="max-width:1280px;margin:0 auto">
+            <div class="reveal" style="text-align:center;margin-bottom:64px">
+                <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
+                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Certifications & Awards</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight">
+                <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em">
                     Credentials & <span class="gradient-text">Recognition</span>
                 </h2>
             </div>
 
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- AWS SAA -->
-                <div class="reveal cert-badge rounded-2xl p-6 flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-[#FF9900]/10 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
-                            <path d="M6.76 8.3l-1.4 5.98.04.02h2.67l1.48-5.98H6.76zm4.68 0l-1.48 5.98h2.35l.47-2.13c.1-.44.18-.82.25-1.13l.06-.28c.03-.13.05-.24.07-.33.02-.1.04-.18.06-.25l.02-.08h.03c.04.14.08.3.14.5.06.2.12.42.2.66.07.24.15.5.24.76l.8 2.28h2.3l1.48-5.98H15.5l-.48 2.13c-.09.4-.17.76-.24 1.08l-.05.23c-.03.12-.05.22-.07.3l-.06.24-.02.07h-.03c-.04-.14-.09-.3-.15-.5l-.2-.66c-.08-.24-.15-.5-.24-.76l-.82-2.33h-1.76zm-8.93 0L.72 17.1h2.35l.33-1.52h2.3l.12 1.52h2.48L6.54 8.3H2.51zm.88 3.82l.6-2.73h.03l.5 2.73H3.39zm15.22-3.82l-1.75 5.98h2.35l.47-2.13c.1-.44.18-.82.25-1.13l.06-.28.07-.33.06-.25.02-.08h.03c.04.14.08.3.14.5.06.2.12.42.2.66.07.24.15.5.24.76l.8 2.28h2.3l1.48-5.98H22.2l-.48 2.13c-.09.4-.17.76-.24 1.08l-.05.23c-.03.12-.05.22-.07.3l-.06.24-.02.07h-.03c-.04-.14-.09-.3-.15-.5l-.2-.66c-.08-.24-.15-.5-.24-.76l-.82-2.33h-1.23z" fill="#FF9900"/>
-                        </svg>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
+                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,153,0,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="none"><path d="M6.76 8.3l-1.4 5.98.04.02h2.67l1.48-5.98H6.76zm4.68 0l-1.48 5.98h2.35l.47-2.13c.1-.44.18-.82.25-1.13l.06-.28c.03-.13.05-.24.07-.33.02-.1.04-.18.06-.25l.02-.08h.03c.04.14.08.3.14.5.06.2.12.42.2.66.07.24.15.5.24.76l.8 2.28h2.3l1.48-5.98H15.5l-.48 2.13c-.09.4-.17.76-.24 1.08l-.05.23c-.03.12-.05.22-.07.3l-.06.24-.02.07h-.03c-.04-.14-.09-.3-.15-.5l-.2-.66c-.08-.24-.15-.5-.24-.76l-.82-2.33h-1.76zm-8.93 0L.72 17.1h2.35l.33-1.52h2.3l.12 1.52h2.48L6.54 8.3H2.51zm.88 3.82l.6-2.73h.03l.5 2.73H3.39zm15.22-3.82l-1.75 5.98h2.35l.47-2.13c.1-.44.18-.82.25-1.13l.06-.28.07-.33.06-.25.02-.08h.03c.04.14.08.3.14.5.06.2.12.42.2.66.07.24.15.5.24.76l.8 2.28h2.3l1.48-5.98H22.2l-.48 2.13c-.09.4-.17.76-.24 1.08l-.05.23c-.03.12-.05.22-.07.3l-.06.24-.02.07h-.03c-.04-.14-.09-.3-.15-.5l-.2-.66c-.08-.24-.15-.5-.24-.76l-.82-2.33h-1.23z" fill="#FF9900"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-sm font-medium text-white mb-1">AWS Certified Solutions Architect</h3>
-                        <p class="text-xs text-white/40">Associate Level</p>
+                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">AWS Certified Solutions Architect</h3>
+                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Associate Level</p>
                     </div>
                 </div>
 
-                <!-- Azure Admin -->
-                <div class="reveal cert-badge rounded-2xl p-6 flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-[#0078D4]/10 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
-                            <path d="M5.48 3.16v7.68l6.6 3.36V6.52l-6.6-3.36zm13.04 0l-6.6 3.36v7.68l6.6-3.36V3.16zM5.48 19.84l6.6 3.36v-7.68l-6.6-3.36v7.68zm13.04 0v-7.68l-6.6 3.36v7.68l6.6-3.36z" fill="#0078D4"/>
-                        </svg>
+                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(0,120,212,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="none"><path d="M5.48 3.16v7.68l6.6 3.36V6.52l-6.6-3.36zm13.04 0l-6.6 3.36v7.68l6.6-3.36V3.16zM5.48 19.84l6.6 3.36v-7.68l-6.6-3.36v7.68zm13.04 0v-7.68l-6.6 3.36v7.68l6.6-3.36z" fill="#0078D4"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-sm font-medium text-white mb-1">Microsoft Certified: Azure Administrator</h3>
-                        <p class="text-xs text-white/40">Associate Level</p>
+                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Microsoft Certified: Azure Administrator</h3>
+                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Associate Level</p>
                     </div>
                 </div>
 
-                <!-- GCP ACE -->
-                <div class="reveal cert-badge rounded-2xl p-6 flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-[#4285F4]/10 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#4285F4"/>
-                        </svg>
+                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(66,133,244,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#4285F4"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-sm font-medium text-white mb-1">GCP Associate Cloud Engineer</h3>
-                        <p class="text-xs text-white/40">Google Cloud</p>
+                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">GCP Associate Cloud Engineer</h3>
+                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Google Cloud</p>
                     </div>
                 </div>
 
-                <!-- GitHub Actions -->
-                <div class="reveal cert-badge rounded-2xl p-6 flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="white">
-                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                        </svg>
+                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-sm font-medium text-white mb-1">GitHub Actions Certification</h3>
-                        <p class="text-xs text-white/40">GitHub — 2016</p>
+                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">GitHub Actions Certification</h3>
+                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">GitHub — 2016</p>
                     </div>
                 </div>
 
-                <!-- Excellence Award -->
-                <div class="reveal cert-badge rounded-2xl p-6 flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                        <i data-lucide="trophy" class="w-6 h-6 text-amber-400"></i>
+                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg class="icon-lg" style="color:#F59E0B" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-sm font-medium text-white mb-1">Excellence Award</h3>
-                        <p class="text-xs text-white/40">Outstanding contribution to project delivery</p>
+                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Excellence Award</h3>
+                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Outstanding contribution to project delivery</p>
                     </div>
                 </div>
 
-                <!-- TechnoWiz Award -->
-                <div class="reveal cert-badge rounded-2xl p-6 flex items-start gap-4">
-                    <div class="w-12 h-12 rounded-xl bg-violet-500/10 flex items-center justify-center flex-shrink-0">
-                        <i data-lucide="lightbulb" class="w-6 h-6 text-violet-400"></i>
+                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
+                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg class="icon-lg" style="color:#8B5CF6" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
                     </div>
                     <div>
-                        <h3 class="text-sm font-medium text-white mb-1">TechnoWiz Award</h3>
-                        <p class="text-xs text-white/40">Innovative Proof of Concepts (PoCs)</p>
+                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">TechnoWiz Award</h3>
+                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Innovative Proof of Concepts (PoCs)</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="section-divider max-w-7xl mx-auto"></div>
+    <div class="divider" style="max-width:1280px;margin:0 auto"></div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="relative py-24 lg:py-32 px-6">
-        <div class="max-w-3xl mx-auto text-center">
+    <!-- Contact -->
+    <section id="contact" style="position:relative;padding:96px 24px">
+        <div style="max-width:672px;margin:0 auto;text-align:center">
             <div class="reveal">
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.03] mb-6">
-                    <i data-lucide="send" class="w-3.5 h-3.5 text-blue-400"></i>
-                    <span class="text-xs font-medium text-white/60 tracking-wide">Get In Touch</span>
+                <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
+                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Get In Touch</span>
                 </div>
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight mb-6">
+                <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em;margin-bottom:24px">
                     Let's <span class="gradient-text">Connect</span>
                 </h2>
-                <p class="text-base text-white/50 mb-12 max-w-lg mx-auto leading-relaxed">
+                <p style="font-size:16px;color:rgba(255,255,255,0.5);margin-bottom:48px;max-width:512px;margin-left:auto;margin-right:auto;line-height:1.7">
                     I'm always open to discussing new opportunities, cloud architecture challenges, or interesting DevOps projects. Feel free to reach out.
                 </p>
             </div>
 
-            <div class="reveal grid sm:grid-cols-2 gap-4 mb-8">
-                <a href="mailto:pkishore9391@gmail.com" class="glass-card rounded-2xl p-6 flex items-center gap-4 group text-left">
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-blue-500/20 transition-colors">
-                        <i data-lucide="mail" class="w-5 h-5 text-blue-400"></i>
+            <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px">
+                <a href="mailto:pkishore9391@gmail.com" class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;text-decoration:none">
+                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg class="icon-md" style="color:#60A5FA" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                     </div>
-                    <div class="min-w-0">
-                        <div class="text-xs text-white/40 mb-0.5">Email</div>
-                        <div class="text-sm text-white/80 truncate">pkishore9391@gmail.com</div>
+                    <div style="min-width:0">
+                        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:2px">Email</div>
+                        <div style="font-size:14px;color:rgba(255,255,255,0.8);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">pkishore9391@gmail.com</div>
                     </div>
                 </a>
-                <a href="tel:+919391263514" class="glass-card rounded-2xl p-6 flex items-center gap-4 group text-left">
-                    <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
-                        <i data-lucide="phone" class="w-5 h-5 text-green-400"></i>
+                <a href="tel:+919391263514" class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;text-decoration:none">
+                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                        <svg class="icon-md" style="color:#22C55E" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     </div>
                     <div>
-                        <div class="text-xs text-white/40 mb-0.5">Phone</div>
-                        <div class="text-sm text-white/80">+91 93912 63514</div>
+                        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:2px">Phone</div>
+                        <div style="font-size:14px;color:rgba(255,255,255,0.8)">+91 93912 63514</div>
                     </div>
                 </a>
             </div>
 
             <div class="reveal">
-                <a href="mailto:pkishore9391@gmail.com" class="cta-btn inline-flex items-center gap-2 px-8 py-4 bg-white text-black text-sm font-medium rounded-xl hover:bg-white/90 shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:shadow-[0_0_40px_rgba(255,255,255,0.25)] transition-shadow">
-                    <i data-lucide="send" class="w-4 h-4"></i>
+                <a href="mailto:pkishore9391@gmail.com" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#fff;color:#000;font-size:14px;font-weight:500;border-radius:12px;text-decoration:none;box-shadow:0 0 30px rgba(255,255,255,0.15)">
+                    <svg class="icon-sm" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
                     Send Me an Email
                 </a>
             </div>
@@ -955,32 +682,23 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-white/5 py-8 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-6 h-6 rounded-md bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-[10px] font-bold text-white">K</div>
-                <span class="text-xs text-white/30">© 2025 Kishore Penty. All rights reserved.</span>
+    <footer style="border-top:1px solid rgba(255,255,255,0.05);padding:32px 24px">
+        <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+            <div style="display:flex;align-items:center;gap:12px">
+                <div style="width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#3B82F6,#8B5CF6);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">K</div>
+                <span style="font-size:12px;color:rgba(255,255,255,0.3)">© 2025 Kishore Penty. All rights reserved.</span>
             </div>
-            <div class="flex items-center gap-1 text-xs text-white/20">
+            <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:rgba(255,255,255,0.2)">
                 <span>Built with</span>
-                <i data-lucide="heart" class="w-3 h-3 text-red-400/60 mx-0.5"></i>
+                <svg style="width:12px;height:12px;color:rgba(244,63,94,0.6)" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 <span>and Terraform</span>
             </div>
         </div>
     </footer>
 
-    <!-- Toast -->
-    <div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-5 py-3 rounded-xl bg-white/10 backdrop-blur-xl border border-white/10 text-sm text-white/80 flex items-center gap-2">
-        <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i>
-        <span id="toastMessage">Copied!</span>
-    </div>
-
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // ========== Typing Animation ==========
-        const phrases = [
+        // Typing Animation
+        var phrases = [
             'terraform plan -out=landing-zone.tfplan',
             'aws sts get-caller-identity',
             'kubectl get pods --all-namespaces',
@@ -988,13 +706,11 @@
             'ansible-playbook deploy.yml --check',
             'gh workflow run ci-cd-pipeline.yml',
         ];
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typingEl = document.getElementById('typingText');
+        var phraseIndex = 0, charIndex = 0, isDeleting = false;
+        var typingEl = document.getElementById('typingText');
 
         function typeEffect() {
-            const current = phrases[phraseIndex];
+            var current = phrases[phraseIndex];
             if (!isDeleting) {
                 typingEl.textContent = current.substring(0, charIndex + 1);
                 charIndex++;
@@ -1018,26 +734,24 @@
         }
         setTimeout(typeEffect, 1000);
 
-        // ========== Scroll Reveal ==========
-        const revealEls = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
+        // Scroll Reveal
+        var revealEls = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry, i) {
                 if (entry.isIntersecting) {
-                    setTimeout(() => {
+                    setTimeout(function() {
                         entry.target.classList.add('visible');
                     }, i * 80);
                     observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        revealEls.forEach(el => observer.observe(el));
+        revealEls.forEach(function(el) { observer.observe(el); });
 
-        // ========== Navbar Background on Scroll ==========
-        const navbar = document.getElementById('navbar');
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const scrollY = window.scrollY;
-            if (scrollY > 80) {
+        // Navbar
+        var navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 80) {
                 navbar.style.background = 'rgba(0,0,0,0.8)';
                 navbar.style.backdropFilter = 'blur(24px)';
                 navbar.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
@@ -1046,21 +760,19 @@
                 navbar.style.backdropFilter = 'none';
                 navbar.style.borderBottom = '1px solid transparent';
             }
-            lastScroll = scrollY;
         });
 
-        // ========== Active Nav Link ==========
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 120;
-                if (window.scrollY >= sectionTop) {
+        // Active Nav
+        var sections = document.querySelectorAll('section[id]');
+        var navLinks = document.querySelectorAll('.nav-link');
+        window.addEventListener('scroll', function() {
+            var current = '';
+            sections.forEach(function(section) {
+                if (window.scrollY >= section.offsetTop - 120) {
                     current = section.getAttribute('id');
                 }
             });
-            navLinks.forEach(link => {
+            navLinks.forEach(function(link) {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === '#' + current) {
                     link.classList.add('active');
@@ -1068,33 +780,27 @@
             });
         });
 
-        // ========== Mobile Menu ==========
-        const menuToggle = document.getElementById('menuToggle');
-        const menuClose = document.getElementById('menuClose');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        // Mobile Menu
+        var menuToggle = document.getElementById('menuToggle');
+        var menuClose = document.getElementById('menuClose');
+        var mobileMenu = document.getElementById('mobileMenu');
 
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('open');
+        menuToggle.addEventListener('click', function() {
+            mobileMenu.style.display = 'block';
+            setTimeout(function() { mobileMenu.classList.add('open'); }, 10);
             document.body.style.overflow = 'hidden';
         });
 
         function closeMenu() {
             mobileMenu.classList.remove('open');
             document.body.style.overflow = '';
+            setTimeout(function() { mobileMenu.style.display = 'none'; }, 400);
         }
 
         menuClose.addEventListener('click', closeMenu);
-        mobileNavLinks.forEach(link => link.addEventListener('click', closeMenu));
-
-        // ========== Toast Function ==========
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toastMessage');
-            toastMsg.textContent = message;
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2500);
-        }
+        document.querySelectorAll('.mob-link').forEach(function(link) {
+            link.addEventListener('click', closeMenu);
+        });
     </script>
 </body>
 </html>
