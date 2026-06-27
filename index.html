@@ -1,806 +1,480 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kishore Penty — AWS Platform Engineer</title>
-    <meta name="description" content="AWS Platform Engineer with 9+ years of experience in Cloud Architecture and DevOps Engineering.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        if(typeof tailwind !== 'undefined'){
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        fontFamily: {
-                            sans: ['Inter', 'system-ui', 'sans-serif'],
-                            mono: ['JetBrains Mono', 'monospace'],
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        html{scroll-behavior:smooth}
-        body{font-family:'Inter',system-ui,sans-serif;background:#000;color:#fff;overflow-x:hidden}
-        ::-webkit-scrollbar{width:6px}
-        ::-webkit-scrollbar-track{background:#000}
-        ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:3px}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kishore Penty | Senior DevOps & AWS Platform Engineer</title>
+<meta name="description" content="Results-driven AWS Platform Engineer with 9+ years of experience in Infrastructure Development, Cloud Architecture and DevOps Engineering."/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0a0f0a;--bg2:#0d140d;--bg3:#111811;
+--card:#111811;--card2:#162016;
+--border:#1e2e1e;--border2:#243324;
+--green:#22c55e;--green2:#16a34a;--green3:#4ade80;
+--text:#f0fdf4;--text2:#bbf7d0;--text3:#86efac;--text4:#4ade80;
+--muted:#6b7280;--muted2:#9ca3af;
+--red:#ef4444;--amber:#f59e0b;
+}
+[data-theme="light"]{
+--bg:#f0fdf4;--bg2:#dcfce7;--bg3:#f9fafb;
+--card:#ffffff;--card2:#f0fdf4;
+--border:#bbf7d0;--border2:#86efac;
+--text:#0f172a;--text2:#166534;--text3:#15803d;--text4:#16a34a;
+--muted:#6b7280;--muted2:#374151;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;line-height:1.6;min-height:100vh;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(34,197,94,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(34,197,94,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
 
-        @keyframes fadeSlideIn{0%{opacity:0;transform:translateY(30px);filter:blur(8px)}100%{opacity:1;transform:translateY(0);filter:blur(0)}}
-        @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-8px,-12px)}}
-        @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-8px)}}
-        @keyframes float3{0%,100%{transform:translate(0,0)}50%{transform:translate(-4px,8px)}}
-        @keyframes blink-caret{from,to{border-color:transparent}50%{border-color:#3B82F6}}
-        @keyframes orbit{from{transform:rotate(0deg) translateX(140px) rotate(0deg)}to{transform:rotate(360deg) translateX(140px) rotate(-360deg)}}
-        @keyframes grid-pulse{0%,100%{opacity:0.03}50%{opacity:0.06}}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,15,10,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between}
+[data-theme="light"] nav{background:rgba(240,253,244,0.9)}
+.nav-logo{font-size:1.1rem;font-weight:700;color:var(--green);letter-spacing:-0.5px}
+.nav-logo span{color:var(--text)}
+.nav-links{display:flex;gap:1.5rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted2);text-decoration:none;font-size:0.875rem;transition:color .2s}
+.nav-links a:hover{color:var(--green)}
+.theme-btn{background:none;border:1px solid var(--border2);color:var(--text3);padding:5px 12px;border-radius:6px;cursor:pointer;font-size:0.8rem;transition:all .2s}
+.theme-btn:hover{background:var(--border);color:var(--green)}
+.hamburger{display:none;background:none;border:none;color:var(--text);cursor:pointer;font-size:1.4rem;padding:4px}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:1rem;z-index:99}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:var(--text2);text-decoration:none;font-size:0.95rem;padding:0.5rem 0;border-bottom:1px solid var(--border)}
 
-        .anim{animation:fadeSlideIn 0.8s ease-out both}
-        .d1{animation-delay:.1s}.d2{animation-delay:.2s}.d3{animation-delay:.3s}
-        .d4{animation-delay:.4s}.d5{animation-delay:.5s}.d6{animation-delay:.6s}.d7{animation-delay:.7s}
+main{position:relative;z-index:1}
+section{padding:5rem 1.5rem;max-width:1100px;margin:0 auto}
 
-        .reveal{opacity:0;transform:translateY(40px);transition:all 0.9s cubic-bezier(0.16,1,0.3,1)}
-        .reveal.visible{opacity:1;transform:translateY(0)}
+/* HERO */
+#hero{padding-top:8rem;text-align:center;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;max-width:100%;position:relative;overflow:hidden}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:0.12;pointer-events:none}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,#22c55e,transparent);top:-100px;left:-100px}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,#16a34a,transparent);bottom:-80px;right:-80px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);color:var(--green3);padding:6px 16px;border-radius:999px;font-size:0.8rem;font-family:monospace}
+.blink{animation:blink 1s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+h1.hero-name{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;line-height:1.15;letter-spacing:-1px}
+h1.hero-name span{color:var(--green)}
+.hero-title{font-size:clamp(1rem,2.5vw,1.3rem);color:var(--text3);font-weight:400}
+.hero-desc{max-width:680px;color:var(--muted2);font-size:0.95rem;line-height:1.7}
+.hero-stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem}
+.stat{text-align:center}
+.stat-num{font-size:1.8rem;font-weight:800;color:var(--green);display:block}
+.stat-lbl{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.btn-primary{background:var(--green2);color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:all .2s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--green);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--green3);padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;border:1px solid rgba(34,197,94,0.4);transition:all .2s}
+.btn-outline:hover{background:rgba(34,197,94,0.08);transform:translateY(-1px)}
 
-        .gradient-text{background:linear-gradient(135deg,#fff 0%,#60a5fa 50%,#a78bfa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+/* SECTION HEADERS */
+.sec-header{text-align:center;margin-bottom:3rem}
+.sec-tag{display:inline-block;background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2);color:var(--green3);padding:4px 14px;border-radius:999px;font-size:0.75rem;font-family:monospace;margin-bottom:.75rem}
+.sec-header h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;color:var(--text)}
+.sec-header p{color:var(--muted2);margin-top:.5rem;max-width:600px;margin-left:auto;margin-right:auto}
 
-        .glass{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);backdrop-filter:blur(24px);transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
-        .glass:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.12);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+/* EXPERIENCE */
+.exp-grid{display:flex;flex-direction:column;gap:1.5rem}
+.exp-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--green2)}
+.exp-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.75rem}
+.exp-company{font-size:1.1rem;font-weight:700;color:var(--green3)}
+.exp-period{font-size:0.78rem;color:var(--muted);background:rgba(34,197,94,0.08);border:1px solid var(--border);padding:3px 10px;border-radius:999px;white-space:nowrap}
+.exp-role{font-size:0.9rem;color:var(--text2);margin-bottom:1rem}
+.exp-role span{color:var(--muted)}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.45rem}
+.exp-bullets li{display:flex;gap:.6rem;font-size:0.85rem;color:var(--muted2);line-height:1.5}
+.exp-bullets li::before{content:'▸';color:var(--green);flex-shrink:0;margin-top:2px}
 
-        .timeline-line{background:linear-gradient(to bottom,transparent,rgba(59,130,246,0.3),rgba(139,92,246,0.3),transparent)}
-        .timeline-dot{background:#000;border:2px solid rgba(59,130,246,0.6);box-shadow:0 0 12px rgba(59,130,246,0.3);transition:all 0.3s}
-        .timeline-item:hover .timeline-dot{background:#3B82F6;box-shadow:0 0 20px rgba(59,130,246,0.5);transform:scale(1.3)}
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem}
+.skill-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color .2s,transform .2s}
+.skill-card:hover{border-color:rgba(34,197,94,0.4);transform:translateY(-2px)}
+.skill-icon{font-size:1.4rem;margin-bottom:.6rem}
+.skill-cat{font-size:0.8rem;color:var(--green3);font-weight:600;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.5px}
+.skill-items{font-size:0.8rem;color:var(--muted2);line-height:1.6}
 
-        .skill-tag{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);transition:all 0.25s;cursor:default}
-        .skill-tag:hover{background:rgba(59,130,246,0.15);border-color:rgba(59,130,246,0.3);transform:translateY(-2px)}
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;display:flex;gap:.9rem;align-items:flex-start;transition:border-color .2s}
+.cert-card:hover{border-color:rgba(34,197,94,0.4)}
+.cert-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.cert-icon.aws{background:rgba(255,153,0,0.12);border:1px solid rgba(255,153,0,0.25)}
+.cert-icon.gh{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.2)}
+.cert-icon.gcp{background:rgba(66,133,244,0.1);border:1px solid rgba(66,133,244,0.2)}
+.cert-icon.az{background:rgba(0,120,212,0.1);border:1px solid rgba(0,120,212,0.2)}
+.cert-icon.award{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25)}
+.cert-name{font-size:0.85rem;font-weight:600;color:var(--text);line-height:1.3}
+.cert-issuer{font-size:0.75rem;color:var(--muted);margin-top:2px}
 
-        .nav-link{position:relative;transition:color 0.3s}
-        .nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:linear-gradient(to right,#3B82F6,#8B5CF6);transition:width 0.3s}
-        .nav-link:hover::after,.nav-link.active::after{width:100%}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem}
+.contact-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;text-align:center;transition:border-color .2s}
+.contact-card:hover{border-color:rgba(34,197,94,0.4)}
+.contact-icon{font-size:1.6rem;margin-bottom:.5rem}
+.contact-label{font-size:0.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.3rem}
+.contact-value{font-size:0.9rem;color:var(--text2);font-weight:500}
+.contact-value a{color:inherit;text-decoration:none}
+.contact-value a:hover{color:var(--green)}
 
-        .orbit-ring{border:1px solid rgba(255,255,255,0.04);border-radius:50%;position:absolute}
-        .orbit-dot{width:8px;height:8px;border-radius:50%;position:absolute;animation:orbit linear infinite}
+/* EDU */
+.edu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.5rem;display:flex;gap:1rem;align-items:center}
+.edu-icon{font-size:2rem;flex-shrink:0}
+.edu-deg{font-size:1rem;font-weight:700;color:var(--text)}
+.edu-uni{font-size:0.85rem;color:var(--green3);margin-top:3px}
+.edu-loc{font-size:0.8rem;color:var(--muted)}
 
-        .divider{height:1px;background:linear-gradient(to right,transparent,rgba(255,255,255,0.08),transparent)}
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:2rem 1.5rem;text-align:center;color:var(--muted);font-size:0.82rem}
+footer span{color:var(--green)}
 
-        .cert-badge{background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.1));border:1px solid rgba(59,130,246,0.2);transition:all 0.3s}
-        .cert-badge:hover{background:linear-gradient(135deg,rgba(59,130,246,0.2),rgba(139,92,246,0.2));border-color:rgba(59,130,246,0.4);transform:scale(1.03)}
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:0}
 
-        .terminal-cursor{display:inline-block;width:10px;height:20px;background:#3B82F6;margin-left:2px;animation:blink-caret 1s step-end infinite;vertical-align:text-bottom}
+/* SCROLL ANIM */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.fade-in.visible{opacity:1;transform:none}
 
-        .grid-bg{background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;animation:grid-pulse 8s ease-in-out infinite}
-
-        .cta-btn{position:relative;overflow:hidden;transition:all 0.3s}
-        .cta-btn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent);transition:left 0.5s}
-        .cta-btn:hover::before{left:100%}
-        .cta-btn:active{transform:scale(0.96)}
-
-        .mobile-menu{transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
-        .mobile-menu.open{transform:translateX(0)}
-
-        .icon-sm{width:16px;height:16px;stroke-width:2;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-        .icon-md{width:20px;height:20px;stroke-width:2;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-        .icon-lg{width:24px;height:24px;stroke-width:2;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
-    </style>
+@media(max-width:640px){
+.nav-links{display:none}.hamburger{display:block}
+.hero-stats{gap:1.2rem}
+.stat-num{font-size:1.4rem}
+section{padding:3.5rem 1rem}
+}
+</style>
 </head>
-<body class="grid-bg">
+<body>
 
-    <!-- Background Glows -->
-    <div style="position:fixed;inset:0;pointer-events:none;z-index:0" aria-hidden="true">
-        <div style="position:absolute;top:-200px;left:-100px;width:600px;height:600px;border-radius:50%;background:rgba(59,130,246,0.04);filter:blur(120px);animation:float1 12s ease-in-out infinite"></div>
-        <div style="position:absolute;top:40%;right:-200px;width:500px;height:500px;border-radius:50%;background:rgba(139,92,246,0.03);filter:blur(100px);animation:float2 15s ease-in-out infinite"></div>
-        <div style="position:absolute;bottom:-100px;left:30%;width:700px;height:700px;border-radius:50%;background:rgba(59,130,246,0.02);filter:blur(120px);animation:float3 18s ease-in-out infinite"></div>
+<nav id="navbar">
+  <div class="nav-logo"><span>KP</span>.dev</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><button class="theme-btn" onclick="toggleTheme()" id="themeBtn">☀ Light</button></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">☰</button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#certifications" onclick="closeMenu()">Certifications</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+  <button class="theme-btn" onclick="toggleTheme()" style="width:fit-content">☀ Light</button>
+</div>
+
+<main>
+<!-- HERO -->
+<section id="hero">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="hero-badge">
+    <span style="color:var(--green)">▶</span>
+    <span>aws_platform_engineer.sh</span>
+    <span class="blink">█</span>
+  </div>
+  <h1 class="hero-name">Kishore <span>Penty</span></h1>
+  <div class="hero-title">Senior DevOps Engineer &amp; Lead Cloud Architect</div>
+  <p class="hero-desc">Results-driven AWS Platform Engineer with 9+ years of experience in Infrastructure Development through AWS Cloud Architecture and DevOps Engineering. Holds multiple cloud certifications across AWS, Azure, and GCP.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">9+</span><span class="stat-lbl">Years Experience</span></div>
+    <div class="stat"><span class="stat-num">100+</span><span class="stat-lbl">AWS Accounts Managed</span></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-lbl">Companies</span></div>
+    <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Certifications</span></div>
+  </div>
+  <div class="hero-btns">
+    <a href="#experience" class="btn-primary">View Experience</a>
+    <a href="#contact" class="btn-outline">Get In Touch</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-header fade-in">
+    <div class="sec-tag">// work_history</div>
+    <h2>Experience</h2>
+    <p>9+ years across cloud infrastructure, DevOps engineering, and platform architecture</p>
+  </div>
+  <div class="exp-grid">
+
+    <div class="exp-card fade-in">
+      <div class="exp-header">
+        <div class="exp-company">NTT DATA</div>
+        <div class="exp-period">Aug 2025 – Present</div>
+      </div>
+      <div class="exp-role">AWS Platform Engineer <span>· Hyderabad</span></div>
+      <ul class="exp-bullets">
+        <li>Led and mentored a team of 3 junior engineers, providing technical guidance on Terraform development, AWS best practices, and CI/CD pipeline implementation.</li>
+        <li>Leveraged GitHub Copilot and Amazon Q Business to accelerate Terraform code development and query internal documentation for faster decision-making.</li>
+        <li>Authored reusable Terraform modules for VPC, baseline account config, Security Hub enrolment, hosted zones, and IDP role provisioning.</li>
+        <li>Managed and customised 100+ AWS accounts across multi-account Landing Zones using Terraform, ensuring enterprise cloud governance compliance.</li>
+        <li>Designed IAM roles, OIDC providers, and role assignments for secure CI/CD pipelines with least-privilege access.</li>
+        <li>Integrated Terraform Plan validation into CI/CD pipelines with OPA/Checkov policy checks and Wiz security scanning.</li>
+      </ul>
     </div>
 
-    <!-- Navigation -->
-    <nav id="navbar" style="position:fixed;top:0;left:0;right:0;z-index:50;transition:all 0.5s">
-        <div style="max-width:1280px;margin:0 auto;padding:0 24px">
-            <div style="display:flex;align-items:center;justify-content:space-between;height:64px">
-                <a href="#hero" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff">
-                    <div style="width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#3B82F6,#8B5CF6);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;box-shadow:0 4px 12px rgba(59,130,246,0.3)">K</div>
-                    <span style="font-weight:500;font-size:14px;letter-spacing:-0.01em" class="hidden sm:inline">Kishore Penty</span>
-                </a>
-                <div class="hidden md:flex" style="align-items:center;gap:32px">
-                    <a href="#about" class="nav-link" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none">About</a>
-                    <a href="#experience" class="nav-link" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none">Experience</a>
-                    <a href="#skills" class="nav-link" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none">Skills</a>
-                    <a href="#certifications" class="nav-link" style="font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none">Certifications</a>
-                    <a href="#contact" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:#fff;color:#000;font-size:14px;font-weight:500;border-radius:8px;text-decoration:none">
-                        <svg class="icon-sm" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                        Contact
-                    </a>
-                </div>
-                <button id="menuToggle" class="md:hidden" style="padding:8px;background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer" aria-label="Menu">
-                    <svg class="icon-lg" viewBox="0 0 24 24"><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-                </button>
-            </div>
-        </div>
-        <div id="mobileMenu" class="mobile-menu" style="position:fixed;top:0;right:0;width:288px;height:100%;background:rgba(0,0,0,0.95);backdrop-filter:blur(24px);border-left:1px solid rgba(255,255,255,0.05);z-index:50;display:none">
-            <div style="padding:24px">
-                <button id="menuClose" style="margin-bottom:32px;padding:8px;background:none;border:none;color:rgba(255,255,255,0.6);cursor:pointer" aria-label="Close">
-                    <svg class="icon-lg" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-                <div style="display:flex;flex-direction:column;gap:24px">
-                    <a href="#about" class="mob-link" style="font-size:18px;color:rgba(255,255,255,0.7);text-decoration:none">About</a>
-                    <a href="#experience" class="mob-link" style="font-size:18px;color:rgba(255,255,255,0.7);text-decoration:none">Experience</a>
-                    <a href="#skills" class="mob-link" style="font-size:18px;color:rgba(255,255,255,0.7);text-decoration:none">Skills</a>
-                    <a href="#certifications" class="mob-link" style="font-size:18px;color:rgba(255,255,255,0.7);text-decoration:none">Certifications</a>
-                    <div class="divider" style="margin:8px 0"></div>
-                    <a href="#contact" class="mob-link" style="display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;background:#fff;color:#000;font-size:14px;font-weight:500;border-radius:8px;text-decoration:none">Contact Me</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <div class="exp-card fade-in">
+      <div class="exp-header">
+        <div class="exp-company">Hitachi Vantara</div>
+        <div class="exp-period">Jun 2022 – Aug 2025</div>
+      </div>
+      <div class="exp-role">Senior DevOps Engineer <span>· Hyderabad</span></div>
+      <ul class="exp-bullets">
+        <li>Led a team of 4 junior DevOps engineers, overseeing task allocation, code reviews, and knowledge transfer across cloud infrastructure and automation projects.</li>
+        <li>Proficient in IaC using HashiCorp Terraform (HCL) and Python Lambda automation scripts.</li>
+        <li>Managed AWS RDS (MySQL, Aurora DB, MariaDB), custom VPC setup, subnets, route tables, VPC Peering, ELB, and Auto Scaling.</li>
+        <li>Deployed AWS HSM Cluster, Custom Key Store, and AMIs backed by HSM/KMS keys; managed IAM roles, SCPs, and KMS keys.</li>
+        <li>Integrated AWS Bedrock with Service Catalog to enable foundation model access via governed self-service provisioning for GenAI applications.</li>
+        <li>Debugged real-time pod issues across Prod/UAT/Dev in Kubernetes/EKS; administered Jenkins CI/CD pipelines.</li>
+        <li>Integrated Grafana and Prometheus for monitoring disk, CPU, and memory consumption across servers.</li>
+      </ul>
+    </div>
 
-    <!-- Hero -->
-    <section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:96px 24px 24px">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none" aria-hidden="true">
-            <div class="orbit-ring" style="width:280px;height:280px;animation:grid-pulse 4s ease-in-out infinite"></div>
-            <div class="orbit-ring" style="width:420px;height:420px;animation:grid-pulse 6s ease-in-out infinite 1s"></div>
-            <div class="orbit-ring" style="width:560px;height:560px;animation:grid-pulse 8s ease-in-out infinite 2s"></div>
-            <div class="orbit-dot" style="background:rgba(59,130,246,0.6);animation-duration:12s;top:50%;left:50%"></div>
-            <div class="orbit-dot" style="background:rgba(139,92,246,0.4);animation-duration:18s;animation-direction:reverse;top:50%;left:50%"></div>
-        </div>
+    <div class="exp-card fade-in">
+      <div class="exp-header">
+        <div class="exp-company">Freestone Infotech Pvt Ltd.</div>
+        <div class="exp-period">Feb 2020 – Jun 2022</div>
+      </div>
+      <div class="exp-role">Senior DevOps Engineer <span>· Mumbai</span></div>
+      <ul class="exp-bullets">
+        <li>Deployed infrastructure on AWS using Terraform; created Ansible Playbooks for web and application servers.</li>
+        <li>Managed CI/CD pipelines using Jenkins, Maven, Ansible, Terraform, and Git for end-to-end delivery.</li>
+        <li>Implemented ELK stack — Elasticsearch clusters, Kibana, Logstash for log monitoring and Metricbeat for network/system stats.</li>
+        <li>Integrated HashiCorp Vault for password management; hosted S3-based CloudFront static web applications.</li>
+        <li>Worked across AWS and Azure using DevOps tools: Git, Maven, Jenkins, Kubernetes, Ansible, Nexus, SonarQube, Nginx.</li>
+      </ul>
+    </div>
 
-        <div style="position:relative;z-index:10;text-align:center;max-width:896px;margin:0 auto">
-            <div class="anim d1" style="display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:32px">
-                <span style="width:8px;height:8px;border-radius:50%;background:#22C55E;box-shadow:0 0 8px rgba(34,197,94,0.5)"></span>
-                <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Available for Opportunities</span>
-            </div>
+    <div class="exp-card fade-in">
+      <div class="exp-header">
+        <div class="exp-company">Optum Global Solutions</div>
+        <div class="exp-period">Jul 2017 – Sep 2019</div>
+      </div>
+      <div class="exp-role">Cloud Engineer / DevOps Engineer <span>· Hyderabad</span></div>
+      <ul class="exp-bullets">
+        <li>Deployed and managed multi-tier, high-availability AWS infrastructure across production, staging, and development environments.</li>
+        <li>Set up Kubernetes clusters and managed pods; deployed Docker-based microservices to EKS and AKS.</li>
+        <li>Performed Physical to Cloud Migration in AWS using CloudEndure.</li>
+        <li>Managed EC2, EBS, IAM, S3, ELB, Auto Scale, CloudWatch, VPC, CloudFront, NACL, and Security Groups.</li>
+      </ul>
+    </div>
 
-            <h1 class="anim d2" style="font-size:clamp(48px,10vw,96px);font-weight:500;letter-spacing:-0.03em;line-height:0.95;margin-bottom:24px">
-                <span class="gradient-text">Kishore</span><br>
-                <span style="color:#fff">Penty</span>
-            </h1>
+    <div class="exp-card fade-in">
+      <div class="exp-header">
+        <div class="exp-company">Magna Infotech</div>
+        <div class="exp-period">Aug 2016 – Feb 2017</div>
+      </div>
+      <div class="exp-role">Linux Admin / Cloud Admin / DevOps Engineer <span>· Hyderabad</span></div>
+      <ul class="exp-bullets">
+        <li>Managed RHEL-based infrastructure; administered user accounts, groups, directories, and file permissions.</li>
+        <li>Installed Nagios for monitoring; configured Splunk Universal Forwarder on UNIX; configured Yum repository server.</li>
+        <li>Performed disk management using LVM; configured Apache Web Server and SSL on RHEL 5.x, 6.x, 7.x.</li>
+        <li>Automated tasks using Python scripts; worked with BMC Remedy and ServiceNow for change management.</li>
+      </ul>
+    </div>
 
-            <div class="anim d3" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;margin-bottom:32px">
-                <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.2)">
-                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-                    <span style="font-size:14px;font-weight:500;color:#60A5FA">AWS Platform Engineer</span>
-                </span>
-                <span class="hidden sm:inline" style="color:rgba(255,255,255,0.2)">|</span>
-                <span style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.2)">
-                    <svg class="icon-sm" style="color:#A78BFA" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
-                    <span style="font-size:14px;font-weight:500;color:#A78BFA">Senior Cloud & DevOps</span>
-                </span>
-            </div>
+  </div>
+</section>
 
-            <div class="anim d4" style="display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);font-family:'JetBrains Mono',monospace;font-size:14px;margin-bottom:40px">
-                <span style="color:#22C55E">$</span>
-                <span style="color:rgba(255,255,255,0.5)" id="typingText"></span>
-                <span class="terminal-cursor"></span>
-            </div>
+<div class="divider"></div>
 
-            <div class="anim d5" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:32px 48px;margin-bottom:48px">
-                <div style="text-align:center">
-                    <div style="font-size:clamp(28px,5vw,40px);font-weight:600;font-variant-numeric:tabular-nums;color:#fff">9<span style="color:#3B82F6">+</span></div>
-                    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;letter-spacing:0.15em">Years Exp</div>
-                </div>
-                <div class="hidden sm:block" style="width:1px;height:40px;background:rgba(255,255,255,0.1)"></div>
-                <div style="text-align:center">
-                    <div style="font-size:clamp(28px,5vw,40px);font-weight:600;font-variant-numeric:tabular-nums;color:#fff">100<span style="color:#3B82F6">+</span></div>
-                    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;letter-spacing:0.15em">AWS Accounts</div>
-                </div>
-                <div class="hidden sm:block" style="width:1px;height:40px;background:rgba(255,255,255,0.1)"></div>
-                <div style="text-align:center">
-                    <div style="font-size:clamp(28px,5vw,40px);font-weight:600;font-variant-numeric:tabular-nums;color:#fff">4</div>
-                    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;letter-spacing:0.15em">Certifications</div>
-                </div>
-                <div class="hidden sm:block" style="width:1px;height:40px;background:rgba(255,255,255,0.1)"></div>
-                <div style="text-align:center">
-                    <div style="font-size:clamp(28px,5vw,40px);font-weight:600;font-variant-numeric:tabular-nums;color:#fff">3</div>
-                    <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:4px;text-transform:uppercase;letter-spacing:0.15em">Cloud Platforms</div>
-                </div>
-            </div>
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-header fade-in">
+    <div class="sec-tag">// tech_stack</div>
+    <h2>Technical Skills</h2>
+    <p>Cloud-native tooling across infrastructure, automation, containers, security, and monitoring</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-cat">Cloud Platforms</div>
+      <div class="skill-items">AWS · Microsoft Azure · Google Cloud Platform</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🏗️</div>
+      <div class="skill-cat">IaC & Automation</div>
+      <div class="skill-items">Terraform · CloudFormation · Ansible · AWS CDK</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🔄</div>
+      <div class="skill-cat">CI/CD Tools</div>
+      <div class="skill-items">Jenkins · GitHub Actions · GitLab CI/CD · Maven · npm</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📝</div>
+      <div class="skill-cat">Scripting</div>
+      <div class="skill-items">Python · Bash · Groovy · AWS CLI</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🐳</div>
+      <div class="skill-cat">Containerization</div>
+      <div class="skill-items">Docker · Kubernetes (EKS, AKS) · ECS</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🗄️</div>
+      <div class="skill-cat">Databases</div>
+      <div class="skill-items">MySQL · Aurora · MariaDB · DynamoDB · DocumentDB · Neptune · Redshift</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📊</div>
+      <div class="skill-cat">Monitoring</div>
+      <div class="skill-items">Grafana · Prometheus · DataDog · New Relic · CloudWatch · CloudTrail</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🔐</div>
+      <div class="skill-cat">Security & Compliance</div>
+      <div class="skill-items">KMS · HSM · ACM · IAM · SCPs · OPA · Checkov · Wiz · Security Hub</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📦</div>
+      <div class="skill-cat">Version Control</div>
+      <div class="skill-items">Git · GitHub · Bitbucket · GitLab · SVN</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🐧</div>
+      <div class="skill-cat">Operating Systems</div>
+      <div class="skill-items">RHEL/CentOS 5.x/6.x/7.x · Ubuntu · Linux</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-cat">Web & App Servers</div>
+      <div class="skill-items">Apache · Tomcat · Nginx</div>
+    </div>
+    <div class="skill-card fade-in">
+      <div class="skill-icon">🎫</div>
+      <div class="skill-cat">Bug Tracking</div>
+      <div class="skill-items">JIRA · Confluence · ServiceNow · BMC Remedy</div>
+    </div>
+  </div>
+</section>
 
-            <div class="anim d6" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px">
-                <a href="#experience" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:#fff;color:#000;font-size:14px;font-weight:500;border-radius:12px;text-decoration:none;box-shadow:0 0 30px rgba(255,255,255,0.15)">
-                    <svg class="icon-sm" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                    View Experience
-                </a>
-                <a href="#contact" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:rgba(255,255,255,0.05);color:#fff;font-size:14px;font-weight:500;border-radius:12px;border:1px solid rgba(255,255,255,0.1);text-decoration:none">
-                    <svg class="icon-sm" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Get In Touch
-                </a>
-            </div>
+<div class="divider"></div>
 
-            <div class="anim d7" style="margin-top:64px;display:flex;flex-direction:column;align-items:center;gap:8px">
-                <span style="font-size:10px;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.2em">Scroll</span>
-                <div style="width:20px;height:32px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:flex-start;justify-content:center;padding:6px">
-                    <div style="width:4px;height:8px;border-radius:9999px;background:rgba(255,255,255,0.4);animation:float3 2s ease-in-out infinite"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="sec-header fade-in">
+    <div class="sec-tag">// credentials</div>
+    <h2>Certifications &amp; Awards</h2>
+    <p>Verified expertise across major cloud platforms</p>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card fade-in">
+      <div class="cert-icon aws">🟠</div>
+      <div>
+        <div class="cert-name">AWS Certified Solutions Architect – Associate</div>
+        <div class="cert-issuer">Amazon Web Services</div>
+      </div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon gh">🟢</div>
+      <div>
+        <div class="cert-name">GitHub Actions Certification</div>
+        <div class="cert-issuer">GitHub</div>
+      </div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon gcp">🔵</div>
+      <div>
+        <div class="cert-name">GCP Associate Cloud Engineer</div>
+        <div class="cert-issuer">Google Cloud</div>
+      </div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon az">💙</div>
+      <div>
+        <div class="cert-name">Azure Administrator Associate</div>
+        <div class="cert-issuer">Microsoft</div>
+      </div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon award">🏆</div>
+      <div>
+        <div class="cert-name">Excellence Award</div>
+        <div class="cert-issuer">Outstanding contribution to delivery of project demands</div>
+      </div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon award">⭐</div>
+      <div>
+        <div class="cert-name">TechnoWiz Award</div>
+        <div class="cert-issuer">Recognition for contribution of innovative Proof of Concepts</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- About -->
-    <section id="about" style="position:relative;padding:96px 24px">
-        <div style="max-width:1280px;margin:0 auto">
-            <div class="reveal" style="display:grid;grid-template-columns:1fr;gap:64px;align-items:center" class="lg-grid">
-                <div>
-                    <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
-                        <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">About Me</span>
-                    </div>
-                    <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em;line-height:1.05;margin-bottom:24px">
-                        Building the <span class="gradient-text">cloud infrastructure</span> that powers modern enterprises
-                    </h2>
-                    <div style="display:flex;flex-direction:column;gap:16px;font-size:16px;color:rgba(255,255,255,0.6);line-height:1.7">
-                        <p>Results-driven AWS Platform Engineer with <span style="color:#fff;font-weight:500">9+ years of experience</span> in Infrastructure Development through AWS Cloud Architecture and DevOps Engineering.</p>
-                        <p>Proficient in designing and managing multi-account Landing Zones, implementing IaC solutions using Terraform and CloudFormation, and driving CI/CD automation with Jenkins and GitHub Actions.</p>
-                        <p>Holds multiple cloud certifications across <span style="color:#60A5FA">AWS</span>, <span style="color:#60A5FA">Azure</span>, and <span style="color:#60A5FA">GCP</span>. Adept at leveraging AI-assisted tools like GitHub Copilot and Amazon Q to accelerate delivery and ensure cloud governance, compliance, and security at scale.</p>
-                    </div>
-                </div>
-                <div style="display:flex;flex-direction:column;gap:16px">
-                    <div class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                            <svg class="icon-md" style="color:#60A5FA" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                        </div>
-                        <div>
-                            <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Location</div>
-                            <div style="font-size:14px;color:rgba(255,255,255,0.5)">Hyderabad, India</div>
-                        </div>
-                    </div>
-                    <div class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                            <svg class="icon-md" style="color:#A78BFA" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
-                        </div>
-                        <div>
-                            <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Education</div>
-                            <div style="font-size:14px;color:rgba(255,255,255,0.5)">MBA — JNTU Hyderabad</div>
-                        </div>
-                    </div>
-                    <div class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                            <svg class="icon-md" style="color:#22C55E" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4c0 2 1 3 2 4l-2 8h8l-2-8c1-1 2-2 2-4a4 4 0 0 0-4-4Z"/><line x1="9" y1="18" x2="9" y2="22"/><line x1="15" y1="18" x2="15" y2="22"/></svg>
-                        </div>
-                        <div>
-                            <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">AI-Enhanced Workflow</div>
-                            <div style="font-size:14px;color:rgba(255,255,255,0.5)">GitHub Copilot · Amazon Q · AI-assisted IaC</div>
-                        </div>
-                    </div>
-                    <div class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                            <svg class="icon-md" style="color:#F59E0B" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                        </div>
-                        <div>
-                            <div style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Awards</div>
-                            <div style="font-size:14px;color:rgba(255,255,255,0.5)">Excellence Award · TechnoWiz Award for innovative PoCs</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="divider"></div>
 
-    <div class="divider" style="max-width:1280px;margin:0 auto"></div>
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-header fade-in">
+    <div class="sec-tag">// education</div>
+    <h2>Education</h2>
+  </div>
+  <div class="edu-card fade-in" style="max-width:600px;margin:0 auto">
+    <div class="edu-icon">🎓</div>
+    <div>
+      <div class="edu-deg">Master of Business Administration (MBA)</div>
+      <div class="edu-uni">Jawaharlal Nehru Technological University (JNTU)</div>
+      <div class="edu-loc">Hyderabad, India</div>
+    </div>
+  </div>
+</section>
 
-    <!-- Experience -->
-    <section id="experience" style="position:relative;padding:96px 24px">
-        <div style="max-width:1280px;margin:0 auto">
-            <div class="reveal" style="text-align:center;margin-bottom:64px">
-                <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
-                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                    <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Experience</span>
-                </div>
-                <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em">
-                    Professional <span class="gradient-text">Journey</span>
-                </h2>
-            </div>
+<div class="divider"></div>
 
-            <div style="position:relative">
-                <div class="hidden lg:block" style="position:absolute;left:50%;top:0;bottom:0;width:1px;transform:translateX(-50%)" class="timeline-line"></div>
-                <div class="lg:hidden" style="position:absolute;left:24px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,rgba(59,130,246,0.3),rgba(139,92,246,0.3),transparent)"></div>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-header fade-in">
+    <div class="sec-tag">// get_in_touch</div>
+    <h2>Contact</h2>
+    <p>Open to new opportunities and collaborations</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card fade-in">
+      <div class="contact-icon">📧</div>
+      <div class="contact-label">Email</div>
+      <div class="contact-value"><a href="mailto:pkishore9391@gmail.com">pkishore9391@gmail.com</a></div>
+    </div>
+    <div class="contact-card fade-in">
+      <div class="contact-icon">📞</div>
+      <div class="contact-label">Phone</div>
+      <div class="contact-value"><a href="tel:+919391263514">+91 93912 63514</a></div>
+    </div>
+    <div class="contact-card fade-in">
+      <div class="contact-icon">📍</div>
+      <div class="contact-label">Location</div>
+      <div class="contact-value">Hyderabad, India</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:1.5rem">
+    <a href="mailto:pkishore9391@gmail.com" class="btn-primary">Send Email →</a>
+  </div>
+</section>
+</main>
 
-                <!-- NTT DATA -->
-                <div class="reveal timeline-item" style="position:relative;margin-bottom:48px;padding-left:64px">
-                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(59,130,246,0.6);box-shadow:0 0 12px rgba(59,130,246,0.3);z-index:10" class="timeline-dot"></div>
-                    <div class="glass" style="border-radius:16px;padding:24px 32px">
-                        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px">
-                            <span style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;background:rgba(34,197,94,0.1);color:#22C55E;font-size:12px;font-weight:500">
-                                <span style="width:6px;height:6px;border-radius:50%;background:#22C55E"></span>Current
-                            </span>
-                            <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Aug 2025 – Present</span>
-                        </div>
-                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-bottom:4px">AWS Platform Engineer</h3>
-                        <div style="font-size:14px;color:#60A5FA;font-weight:500;margin-bottom:16px">NTT DATA · Hyderabad</div>
-                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Leveraged GitHub Copilot to accelerate Terraform development, generate HCL configs, and troubleshoot errors</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Managed 100+ AWS accounts across multi-account Landing Zones using Terraform (IaC)</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Authored reusable Terraform modules for VPC, Security Hub, hosted zones, and IDP provisioning</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Integrated OPA/Checkov policy checks into CI/CD for security and compliance guardrails</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Built CIDR conflict detection workflows to automate network validation</li>
-                        </ul>
-                    </div>
-                </div>
+<footer>
+  <p>Built by <span>Kishore Penty</span> · Senior DevOps &amp; AWS Platform Engineer · Hyderabad</p>
+  <p style="margin-top:6px;font-size:0.75rem;color:var(--muted)">AWS · Azure · GCP · Terraform · Kubernetes</p>
+</footer>
 
-                <!-- Hitachi Vantara -->
-                <div class="reveal timeline-item" style="position:relative;margin-bottom:48px;padding-left:64px">
-                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(139,92,246,0.6);box-shadow:0 0 12px rgba(139,92,246,0.3);z-index:10" class="timeline-dot"></div>
-                    <div class="glass" style="border-radius:16px;padding:24px 32px">
-                        <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Jun 2022 – Aug 2025</span>
-                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-top:12px;margin-bottom:4px">Senior DevOps Engineer</h3>
-                        <div style="font-size:14px;color:#A78BFA;font-weight:500;margin-bottom:16px">Hitachi Vantara · Hyderabad</div>
-                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Wrote IaC using HashiCorp Terraform (HCL) and Python Lambda automation scripts</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Configured ELB, Auto Scaling, SSL via ACM; managed RDS (MySQL, Aurora, MariaDB)</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Integrated AWS Bedrock with Service Catalog for GenAI self-service provisioning</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Debugged real-time pod issues across Prod/UAT/Dev in Kubernetes/EKS</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Administered Jenkins CI/CD pipelines; integrated Grafana & Prometheus monitoring</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Freestone Infotech -->
-                <div class="reveal timeline-item" style="position:relative;margin-bottom:48px;padding-left:64px">
-                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(59,130,246,0.6);box-shadow:0 0 12px rgba(59,130,246,0.3);z-index:10" class="timeline-dot"></div>
-                    <div class="glass" style="border-radius:16px;padding:24px 32px">
-                        <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Feb 2020 – Jun 2022</span>
-                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-top:12px;margin-bottom:4px">Senior DevOps Engineer</h3>
-                        <div style="font-size:14px;color:#60A5FA;font-weight:500;margin-bottom:16px">Freestone Infotech · Mumbai</div>
-                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Designed Azure Landing Zones with policy-driven governance and network segmentation</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Integrated Keycloak with Active Directory for SSO and identity federation</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Implemented ELK stack — Elasticsearch, Kibana, Logstash, Metricbeat</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Integrated HashiCorp Vault for password management across all environments</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Built CI/CD pipelines with Jenkins, Maven, Ansible, Terraform, and Git</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Optum -->
-                <div class="reveal timeline-item" style="position:relative;margin-bottom:48px;padding-left:64px">
-                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(139,92,246,0.6);box-shadow:0 0 12px rgba(139,92,246,0.3);z-index:10" class="timeline-dot"></div>
-                    <div class="glass" style="border-radius:16px;padding:24px 32px">
-                        <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Jul 2017 – Sep 2019</span>
-                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-top:12px;margin-bottom:4px">Cloud Engineer / DevOps Engineer</h3>
-                        <div style="font-size:14px;color:#A78BFA;font-weight:500;margin-bottom:16px">Optum Global Solutions · Hyderabad</div>
-                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Deployed multi-tier, high-availability AWS infrastructure across environments</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Set up Kubernetes clusters, managed pods; deployed Docker microservices to EKS and AKS</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Performed Physical to Cloud Migration using CloudEndure</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(139,92,246,0.6);flex-shrink:0">›</span>Maintained release management and change management processes</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Magna Infotech -->
-                <div class="reveal timeline-item" style="position:relative;padding-left:64px">
-                    <div style="position:absolute;left:16px;top:32px;width:16px;height:16px;border-radius:50%;background:#000;border:2px solid rgba(59,130,246,0.6);box-shadow:0 0 12px rgba(59,130,246,0.3);z-index:10" class="timeline-dot"></div>
-                    <div class="glass" style="border-radius:16px;padding:24px 32px">
-                        <span style="font-size:12px;color:rgba(255,255,255,0.4);font-family:'JetBrains Mono',monospace">Aug 2016 – Feb 2017</span>
-                        <h3 style="font-size:20px;font-weight:500;color:#fff;margin-top:12px;margin-bottom:4px">Linux Admin / Cloud Admin / DevOps Engineer</h3>
-                        <div style="font-size:14px;color:#60A5FA;font-weight:500;margin-bottom:16px">Magna Infotech · Hyderabad</div>
-                        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px">
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Managed RHEL infrastructure; administered users, groups, and permissions</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Installed Nagios monitoring, Splunk clusters on UNIX; configured Yum repos</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Performed LVM disk management; configured Apache, SSL on RHEL/AIX/HP-UX</li>
-                            <li style="display:flex;gap:8px;font-size:14px;color:rgba(255,255,255,0.55);line-height:1.6"><span style="color:rgba(59,130,246,0.6);flex-shrink:0">›</span>Automated tasks using Python; used BMC Remedy and ServiceNow</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider" style="max-width:1280px;margin:0 auto"></div>
-
-    <!-- Skills -->
-    <section id="skills" style="position:relative;padding:96px 24px">
-        <div style="max-width:1280px;margin:0 auto">
-            <div class="reveal" style="text-align:center;margin-bottom:64px">
-                <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
-                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-                    <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Technical Skills</span>
-                </div>
-                <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em">
-                    Tech <span class="gradient-text">Arsenal</span>
-                </h2>
-            </div>
-
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#60A5FA" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">Cloud Technologies</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">AWS</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Microsoft Azure</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Google Cloud Platform</span>
-                    </div>
-                </div>
-
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#A78BFA" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">IaC & Automation</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Terraform</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">CloudFormation</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Ansible</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">AWS CDK</span>
-                    </div>
-                </div>
-
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#22C55E" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">CI/CD Tools</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Jenkins</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">GitHub Actions</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">GitLab CI/CD</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Maven</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">npm</span>
-                    </div>
-                </div>
-
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#F59E0B" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">Scripting</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Python</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Bash</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Groovy</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">AWS CLI</span>
-                    </div>
-                </div>
-
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(6,182,212,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#06B6D4" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">Containerization</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Docker</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Kubernetes (EKS)</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Kubernetes (AKS)</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">ECS</span>
-                    </div>
-                </div>
-
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(244,63,94,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#F43F5E" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">Databases</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">MySQL</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Aurora</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">MariaDB</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">DynamoDB</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">DocumentDB</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Neptune DB</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Redshift</span>
-                    </div>
-                </div>
-
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(99,102,241,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#6366F1" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">Monitoring</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Grafana</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Prometheus</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">DataDog</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">New Relic</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Helm</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">CloudWatch</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">CloudTrail</span>
-                    </div>
-                </div>
-
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#10B981" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">Security & Compliance</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">KMS</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">HSM</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">ACM</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">IAM</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">SCPs</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">OPA</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Checkov</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Wiz</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Security Hub</span>
-                    </div>
-                </div>
-
-                <div class="reveal glass" style="border-radius:16px;padding:24px">
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-                        <div style="width:40px;height:40px;border-radius:12px;background:rgba(236,72,153,0.1);display:flex;align-items:center;justify-content:center">
-                            <svg class="icon-md" style="color:#EC4899" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
-                        </div>
-                        <h3 style="font-size:16px;font-weight:500;color:#fff">VCS & Other</h3>
-                    </div>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px">
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Git</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">GitHub</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Bitbucket</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">GitLab</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">JIRA</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Apache</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">Nginx</span>
-                        <span class="skill-tag" style="padding:6px 12px;border-radius:8px;font-size:12px;color:rgba(255,255,255,0.7)">RHEL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider" style="max-width:1280px;margin:0 auto"></div>
-
-    <!-- Certifications -->
-    <section id="certifications" style="position:relative;padding:96px 24px">
-        <div style="max-width:1280px;margin:0 auto">
-            <div class="reveal" style="text-align:center;margin-bottom:64px">
-                <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
-                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                    <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Certifications & Awards</span>
-                </div>
-                <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em">
-                    Credentials & <span class="gradient-text">Recognition</span>
-                </h2>
-            </div>
-
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
-                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,153,0,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                        <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="none"><path d="M6.76 8.3l-1.4 5.98.04.02h2.67l1.48-5.98H6.76zm4.68 0l-1.48 5.98h2.35l.47-2.13c.1-.44.18-.82.25-1.13l.06-.28c.03-.13.05-.24.07-.33.02-.1.04-.18.06-.25l.02-.08h.03c.04.14.08.3.14.5.06.2.12.42.2.66.07.24.15.5.24.76l.8 2.28h2.3l1.48-5.98H15.5l-.48 2.13c-.09.4-.17.76-.24 1.08l-.05.23c-.03.12-.05.22-.07.3l-.06.24-.02.07h-.03c-.04-.14-.09-.3-.15-.5l-.2-.66c-.08-.24-.15-.5-.24-.76l-.82-2.33h-1.76zm-8.93 0L.72 17.1h2.35l.33-1.52h2.3l.12 1.52h2.48L6.54 8.3H2.51zm.88 3.82l.6-2.73h.03l.5 2.73H3.39zm15.22-3.82l-1.75 5.98h2.35l.47-2.13c.1-.44.18-.82.25-1.13l.06-.28.07-.33.06-.25.02-.08h.03c.04.14.08.3.14.5.06.2.12.42.2.66.07.24.15.5.24.76l.8 2.28h2.3l1.48-5.98H22.2l-.48 2.13c-.09.4-.17.76-.24 1.08l-.05.23c-.03.12-.05.22-.07.3l-.06.24-.02.07h-.03c-.04-.14-.09-.3-.15-.5l-.2-.66c-.08-.24-.15-.5-.24-.76l-.82-2.33h-1.23z" fill="#FF9900"/></svg>
-                    </div>
-                    <div>
-                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">AWS Certified Solutions Architect</h3>
-                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Associate Level</p>
-                    </div>
-                </div>
-
-                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(0,120,212,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                        <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="none"><path d="M5.48 3.16v7.68l6.6 3.36V6.52l-6.6-3.36zm13.04 0l-6.6 3.36v7.68l6.6-3.36V3.16zM5.48 19.84l6.6 3.36v-7.68l-6.6-3.36v7.68zm13.04 0v-7.68l-6.6 3.36v7.68l6.6-3.36z" fill="#0078D4"/></svg>
-                    </div>
-                    <div>
-                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Microsoft Certified: Azure Administrator</h3>
-                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Associate Level</p>
-                    </div>
-                </div>
-
-                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(66,133,244,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                        <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" fill="#4285F4"/></svg>
-                    </div>
-                    <div>
-                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">GCP Associate Cloud Engineer</h3>
-                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Google Cloud</p>
-                    </div>
-                </div>
-
-                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                        <svg style="width:28px;height:28px" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-                    </div>
-                    <div>
-                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">GitHub Actions Certification</h3>
-                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">GitHub — 2016</p>
-                    </div>
-                </div>
-
-                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                        <svg class="icon-lg" style="color:#F59E0B" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                    </div>
-                    <div>
-                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">Excellence Award</h3>
-                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Outstanding contribution to project delivery</p>
-                    </div>
-                </div>
-
-                <div class="reveal cert-badge" style="border-radius:16px;padding:24px;display:flex;align-items:flex-start;gap:16px">
-                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(139,92,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                        <svg class="icon-lg" style="color:#8B5CF6" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>
-                    </div>
-                    <div>
-                        <h3 style="font-size:14px;font-weight:500;color:#fff;margin-bottom:4px">TechnoWiz Award</h3>
-                        <p style="font-size:12px;color:rgba(255,255,255,0.4)">Innovative Proof of Concepts (PoCs)</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider" style="max-width:1280px;margin:0 auto"></div>
-
-    <!-- Contact -->
-    <section id="contact" style="position:relative;padding:96px 24px">
-        <div style="max-width:672px;margin:0 auto;text-align:center">
-            <div class="reveal">
-                <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border-radius:9999px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);margin-bottom:24px">
-                    <svg class="icon-sm" style="color:#60A5FA" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                    <span style="font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);letter-spacing:0.05em">Get In Touch</span>
-                </div>
-                <h2 style="font-size:clamp(28px,5vw,48px);font-weight:500;letter-spacing:-0.02em;margin-bottom:24px">
-                    Let's <span class="gradient-text">Connect</span>
-                </h2>
-                <p style="font-size:16px;color:rgba(255,255,255,0.5);margin-bottom:48px;max-width:512px;margin-left:auto;margin-right:auto;line-height:1.7">
-                    I'm always open to discussing new opportunities, cloud architecture challenges, or interesting DevOps projects. Feel free to reach out.
-                </p>
-            </div>
-
-            <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px">
-                <a href="mailto:pkishore9391@gmail.com" class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;text-decoration:none">
-                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(59,130,246,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                        <svg class="icon-md" style="color:#60A5FA" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                    </div>
-                    <div style="min-width:0">
-                        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:2px">Email</div>
-                        <div style="font-size:14px;color:rgba(255,255,255,0.8);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">pkishore9391@gmail.com</div>
-                    </div>
-                </a>
-                <a href="tel:+919391263514" class="glass" style="border-radius:16px;padding:24px;display:flex;align-items:center;gap:16px;text-decoration:none">
-                    <div style="width:48px;height:48px;border-radius:12px;background:rgba(34,197,94,0.1);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-                        <svg class="icon-md" style="color:#22C55E" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                    </div>
-                    <div>
-                        <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:2px">Phone</div>
-                        <div style="font-size:14px;color:rgba(255,255,255,0.8)">+91 93912 63514</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="reveal">
-                <a href="mailto:pkishore9391@gmail.com" class="cta-btn" style="display:inline-flex;align-items:center;gap:8px;padding:16px 32px;background:#fff;color:#000;font-size:14px;font-weight:500;border-radius:12px;text-decoration:none;box-shadow:0 0 30px rgba(255,255,255,0.15)">
-                    <svg class="icon-sm" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                    Send Me an Email
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer style="border-top:1px solid rgba(255,255,255,0.05);padding:32px 24px">
-        <div style="max-width:1280px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
-            <div style="display:flex;align-items:center;gap:12px">
-                <div style="width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#3B82F6,#8B5CF6);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff">K</div>
-                <span style="font-size:12px;color:rgba(255,255,255,0.3)">© 2025 Kishore Penty. All rights reserved.</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:4px;font-size:12px;color:rgba(255,255,255,0.2)">
-                <span>Built with</span>
-                <svg style="width:12px;height:12px;color:rgba(244,63,94,0.6)" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                <span>and Terraform</span>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Typing Animation
-        var phrases = [
-            'terraform plan -out=landing-zone.tfplan',
-            'aws sts get-caller-identity',
-            'kubectl get pods --all-namespaces',
-            'docker build -t cloud-app:latest .',
-            'ansible-playbook deploy.yml --check',
-            'gh workflow run ci-cd-pipeline.yml',
-        ];
-        var phraseIndex = 0, charIndex = 0, isDeleting = false;
-        var typingEl = document.getElementById('typingText');
-
-        function typeEffect() {
-            var current = phrases[phraseIndex];
-            if (!isDeleting) {
-                typingEl.textContent = current.substring(0, charIndex + 1);
-                charIndex++;
-                if (charIndex === current.length) {
-                    isDeleting = true;
-                    setTimeout(typeEffect, 2000);
-                    return;
-                }
-                setTimeout(typeEffect, 50 + Math.random() * 40);
-            } else {
-                typingEl.textContent = current.substring(0, charIndex - 1);
-                charIndex--;
-                if (charIndex === 0) {
-                    isDeleting = false;
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    setTimeout(typeEffect, 400);
-                    return;
-                }
-                setTimeout(typeEffect, 25);
-            }
-        }
-        setTimeout(typeEffect, 1000);
-
-        // Scroll Reveal
-        var revealEls = document.querySelectorAll('.reveal');
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry, i) {
-                if (entry.isIntersecting) {
-                    setTimeout(function() {
-                        entry.target.classList.add('visible');
-                    }, i * 80);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        revealEls.forEach(function(el) { observer.observe(el); });
-
-        // Navbar
-        var navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 80) {
-                navbar.style.background = 'rgba(0,0,0,0.8)';
-                navbar.style.backdropFilter = 'blur(24px)';
-                navbar.style.borderBottom = '1px solid rgba(255,255,255,0.05)';
-            } else {
-                navbar.style.background = 'transparent';
-                navbar.style.backdropFilter = 'none';
-                navbar.style.borderBottom = '1px solid transparent';
-            }
-        });
-
-        // Active Nav
-        var sections = document.querySelectorAll('section[id]');
-        var navLinks = document.querySelectorAll('.nav-link');
-        window.addEventListener('scroll', function() {
-            var current = '';
-            sections.forEach(function(section) {
-                if (window.scrollY >= section.offsetTop - 120) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(function(link) {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Mobile Menu
-        var menuToggle = document.getElementById('menuToggle');
-        var menuClose = document.getElementById('menuClose');
-        var mobileMenu = document.getElementById('mobileMenu');
-
-        menuToggle.addEventListener('click', function() {
-            mobileMenu.style.display = 'block';
-            setTimeout(function() { mobileMenu.classList.add('open'); }, 10);
-            document.body.style.overflow = 'hidden';
-        });
-
-        function closeMenu() {
-            mobileMenu.classList.remove('open');
-            document.body.style.overflow = '';
-            setTimeout(function() { mobileMenu.style.display = 'none'; }, 400);
-        }
-
-        menuClose.addEventListener('click', closeMenu);
-        document.querySelectorAll('.mob-link').forEach(function(link) {
-            link.addEventListener('click', closeMenu);
-        });
-    </script>
+<script>
+function toggleTheme(){
+  const isDark=!document.documentElement.hasAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme',isDark?'light':'');
+  if(!isDark)document.documentElement.removeAttribute('data-theme');
+  document.querySelectorAll('#themeBtn').forEach(b=>b.textContent=isDark?'🌙 Dark':'☀ Light');
+}
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:0.1});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
